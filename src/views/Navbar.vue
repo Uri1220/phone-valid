@@ -5,7 +5,7 @@
     <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
       <!-- SEMESH -->
       <router-link to="/" tag="span" class="pointer">
-        <v-toolbar-title>Semesh-S</v-toolbar-title>
+        <v-toolbar-title>Semesh</v-toolbar-title>
       </router-link>
       <v-spacer></v-spacer>
 
