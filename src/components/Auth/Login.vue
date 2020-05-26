@@ -66,17 +66,17 @@ export default {
       return this.$store.getters.loading
     }
   },
-  components: {
-  },
+ 
   methods:{
-    onSubmit(){
+    async onSubmit(){
       if(this.$refs.form.validate()){
         const user ={
           email:this.email,
           password:this.password
         }
-           this.$store.dispatch('loginUser', user)
+          await this.$store.dispatch('login', user)
         .then(() => {
+          console.log(user)
           this.$router.push('/')
         })
         .catch(() => {})
@@ -85,10 +85,10 @@ export default {
     },
     
   },
-  created () {
-    if (this.$route.query['loginError']) {
-      this.$store.dispatch('setError', 'Please log in to access this page')
-    }
-  }
+  // created () {
+  //   if (this.$route.query['loginError']) {
+  //     this.$store.dispatch('setError', 'Please log in to access this page')
+  //   }
+  // }
 }
 </script>

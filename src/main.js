@@ -3,15 +3,40 @@ import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify';
 import store from '../src/store/index';
-import VueYouTubeEmbed from 'vue-youtube-embed'
 
-Vue.use(VueYouTubeEmbed)
+import firebase from 'firebase/app'
+import 'firebase/firestore'
+import 'firebase/auth'
+
 
 Vue.config.productionTip = false
 
-new Vue({
-  router,
-  vuetify,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+const firebaseApp=firebase.initializeApp({apiKey: "AIzaSyDx2acOEd3EXtE3-ejjRmf4_n2QW1Dcxdg",
+authDomain: "work-app66.firebaseapp.com",
+databaseURL: "https://work-app66.firebaseio.com",
+projectId: "work-app66",
+storageBucket: "work-app66.appspot.com",
+messagingSenderId: "547049300667",
+appId: "1:547049300667:web:3982cb15d30ecf4c963f9e",
+measurementId: "G-15R9YQ9NZK"})
+ var db= firebaseApp.firestore()
+ 
+ 
+Vue.$db=db
+
+let app
+
+firebase.auth().onAuthStateChanged(()=>{
+  if(!app){
+    app=new Vue({
+      router,
+      vuetify,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  }
+})
+
+
+
+

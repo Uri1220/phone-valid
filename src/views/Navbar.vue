@@ -58,7 +58,6 @@
             no-action 
            >
            <!-- когда раскыта   v-model="item.active" == true -->
-             active: {{item.active}}
             <template v-slot:activator>
               <v-list-item-content>
                 <v-list-item router :to="item.url_title">
@@ -67,7 +66,6 @@
               </v-list-item-content>
 
             </template>
-            Ite:{{linItem}}
 
             <v-list-item 
               v-for="subItem in item.items"

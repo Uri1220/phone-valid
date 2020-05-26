@@ -3,12 +3,9 @@ import VueRouter from 'vue-router'
 import Login from '../components/Auth/Login'
 import Home from '../views/Home.vue'
 import Register from '../components/Auth/Register.vue'
-import Cart from '../views/Cart.vue'
-import Book from '../views/Book.vue'
-import BookPart from '../views/BookPart.vue'
-import ListProduct from '../views/ListProduct.vue'
-import MyProducts from '../views/MyProducts.vue'
-import Sinteros from '../views/linoleum/Sinteros'
+import Linoleum from '../components/Linoleum/Linoleum.vue'
+import Sinteros from '../components/Linoleum/Sinteros.vue'
+
 
 Vue.use(VueRouter)
 
@@ -29,38 +26,16 @@ Vue.use(VueRouter)
       component: Register
     },
     {
-      path: '/book/:id',
-      name: 'book',
-      props:true,
-      component: Book
+      path: '/linoleum/',
+      name: 'Linoleum',
+      component:Linoleum
     },
     {
-      path: '/book/:bookId/part/:partId',
-      name: 'bookPart',
-      props:true,
-      component: BookPart
+      path: '/linoleum/sinteros/',
+      name: 'Sinteros',
+      component:Sinteros
     },
-  {
-    path: '/catalog/linoleum/sinteros/',
-    name: 'lin-sinteros',
-    component: Sinteros
-  },
-  
-  {
-    path: '/linoleum/sinteros/checkout',
-    name: 'Cart',
-    component:Cart
-  },
-  {
-    path: '/linoleum/sinteros/new',
-    name: 'NewProduct',
-    component:ListProduct
-  },
-  {
-    path: '/linoleum/sinteros/list',
-    name: 'MyProducts',
-    component:MyProducts
-  },
+   
   
 ]
 

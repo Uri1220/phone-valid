@@ -6,12 +6,12 @@
     
 
     <v-content class="mx-2">
-      
+       
       <!-- <NavbarMinin
         v-bind:button_items="juteks.juteks_items"
         v-bind:collection="juteks.collection_name"
         @onSub="onSube"
-      /> -->
+      />  -->
       <router-view></router-view>
     </v-content>
     <Footer />
@@ -21,14 +21,12 @@
 <script>
 import Navbar from "../src/views/Navbar";
 import Footer from "../src/views/Footer";
-// import NavbarMinin from "../src/views/NavbarMinin";
 
 export default {
   name: "App",
   components: {
     Navbar,
     Footer,
-    // NavbarMinin
   },
   data: () => ({
     sinteros: {
@@ -105,14 +103,14 @@ export default {
     goods: [
         {
           title: "Линолеум",
-          url_title: "/catalog/linoleum/",
+          url_title: "/linoleum/",
           active:true,
           items: [
-            { title: "Синтерос(РФ)", url: "/catalog/linoleum/sinteros/" },
-            { title: "Juteks (РФ)", url: "/catalog/linoleum/juteks/" },
-            { title: 'IVC "ИВК-Восток"(РФ)', url: "/catalog/linoleum/ivc/" },
-            { title: "Комитекст Лин(РФ)", url: "/catalog/linoleum/komitex/" },
-            { title: "Polystyl(РФ)", url: "/catalog/linoleum/polystyl/" }
+            { title: "Синтерос(РФ)", url: "/linoleum/sinteros/" },
+            { title: "Juteks (РФ)", url: "/linoleum/juteks/" },
+            { title: 'IVC "ИВК-Восток"(РФ)', url: "/linoleum/ivc/" },
+            { title: "Комитекст Лин(РФ)", url: "/linoleum/komitex/" },
+            { title: "Polystyl(РФ)", url: "/linoleum/polystyl/" }
           ]
         },
         {
