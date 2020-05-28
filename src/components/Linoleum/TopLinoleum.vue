@@ -26,35 +26,30 @@
       <v-flex>
         Selected value: {{ bottomNav }}
         <!-- если нет  :value="link.title"  тоздесь выводятся цифры-номера -->
-
+           <!-- router :to="link" -->
         <v-bottom-navigation v-model="bottomNav">
           <v-btn
-            v-for="(link,i) in button_items"
+            v-for="(link,i) in getColSin"
             :key="i"
-            router
-            :to="link.url"
-            :value="link.title"
+          
+            :value="link"
             @click="onSubmit"
           >
-            <span>{{link.title}}</span>
+            <span>{{link}}</span>
             <!-- <v-icon>mdi-home</v-icon> -->
           </v-btn>
         </v-bottom-navigation>
       </v-flex>
 
-      <!-- <v-flex>
-        <form @submit.prevent="onSubmit">
-          Input-value:{{title}}
-          <input type="text" v-model="title" />
-          <button class="success" type="submit">Create</button>
-        </form>
-      </v-flex> -->
 
     </v-layout>
   </v-container>
 </template>
 <script>
+import { mapGetters } from "vuex";
+
 export default {
+    
 //   props: ["button_items", "collection"],
   data: () => ({
     bottomNav: "",
@@ -80,23 +75,18 @@ export default {
   }),
   methods: {
     onSubmit(){
-      // console.log('OnSubmit:',this.bottomNav)
-      if(this.bottomNav.trim()){
-      this.$emit('onSub',this.bottomNav)}
+       console.log('OnSubmit:',this.bottomNav)
+    //   if(this.bottomNav.trim()){
+    //   this.$emit('onSub',this.bottomNav)}
     }
    
-  }
+  },
+  computed: {
+    ...mapGetters(["getSinteros",
+    "getColSin"]),
+
+    
+    }
 };
 </script>
 
-<style scoped>
-  input {
-    border: 1px solid #ccc;
-    display: flex;
-    padding: .5rem 2rem;
-    margin-bottom: 1rem;
-  }
-  input {
-    width: 400px;
-  }
-</style>

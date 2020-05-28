@@ -6,6 +6,7 @@ import Register from '../components/Auth/Register.vue'
 import Linoleum from '../components/Linoleum/Linoleum.vue'
 import Sinteros from '../components/Linoleum/Sinteros.vue'
 import Juteks from '../components/Linoleum/Juteks.vue'
+import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
 
 
 Vue.use(VueRouter)
@@ -40,6 +41,11 @@ Vue.use(VueRouter)
       path: '/linoleum/juteks/',
       name: 'Juteks',
       component:Juteks
+    },
+    {
+      path: '/linoleum/ivc/',
+      name: 'TopLinoleum',
+      component:TopLinoleum
     }
    
   
