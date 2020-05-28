@@ -10,11 +10,9 @@ export default {
       state.lin=payload
     }
   },
-  // computed:{
-  //   ju(){
-  //     return 'juteks'    
-  //   }
-  // } ,
+  computed:{
+    
+  } ,
   actions: {    
     /*eslint-disable*/
     async fetchCategories({ commit, dispatch }) {
@@ -28,20 +26,21 @@ export default {
         
           querySnapshot.forEach((doc) => {
            
-            console.log(`${doc.id} => ${doc.data()}`);
+            // console.log(`${doc.id} => ${doc.data()}`);
             const data= doc.data()
             let linitem={
              id:doc.id,
               born:data.born,
               first:data.first,
               last:data.last,
+              image:data.image,
               ar:data.ar.slice()
 
             }
             linitems.push(linitem)
             
           });
-          console.log(jut)
+          // console.log(jut)
             commit('SET_LINOL',linitems)         
           
         });
@@ -53,5 +52,8 @@ export default {
       }
     },
     
+  },
+  getters:{
+    getLinol:(state)=>state.lin
   }
 }
