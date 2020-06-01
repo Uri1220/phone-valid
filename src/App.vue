@@ -3,17 +3,29 @@
     <Navbar 
     v-bind:goods="goods"
     />
-    
-
-    <v-content class="mx-2">
-       
-      <!-- <NavbarMinin
-        v-bind:button_items="juteks.juteks_items"
-        v-bind:collection="juteks.collection_name"
-        @onSub="onSube"
-      />  -->
+    <template v-if="error">
+      <v-snackbar
+        :multi-line="true"
+        :timeout="50000"
+        color="error"
+        @input="closeError"
+        :value="true"
+      >
+        {{ error }}
+        <v-btn
+          dark
+          text
+          @click.native="closeError"
+        >
+          Close
+        </v-btn>
+      </v-snackbar>
+    </template>
+ 
+    <v-content class="mx-2">    
       <router-view></router-view>
-    </v-content>
+    </v-content> 
+
     <Footer />
   </v-app>
 </template>
@@ -127,10 +139,14 @@ export default {
         }
     ],
   }),
-  methods:{
-    onSube(bo){
-      console.log('App:'+bo)
-
+    methods: {
+    closeError () {
+      this.$store.dispatch('clearError')
+    }
+  },
+  computed: {
+    error () {
+      return this.$store.getters.error
     }
   }
 };

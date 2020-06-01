@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+// import AuthGuard from './auth-guard'
 import Login from '../components/Auth/Login'
 import Home from '../views/Home.vue'
 import Register from '../components/Auth/Register.vue'
@@ -27,7 +28,7 @@ Vue.use(VueRouter)
       path: '/checkout',
       name: 'checkout',
       component: Checkout,
-      // beforeEnter: AuthGuard
+      //  beforeEnter: AuthGuard
     },
     {
       path: '/register',

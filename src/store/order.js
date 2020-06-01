@@ -40,13 +40,13 @@ export default {
       }
     },
     async fetchOrders ({commit}) {
-      // commit('setLoading', true)
-      // commit('clearError')
+       commit('setLoading', true)
+       commit('clearError')
       const resultOrders = []
       try {
         const fbVal = await firebase.database().ref(`/orders`).once('value')
         const orders = fbVal.val()
-        console.log(orders)
+        // console.log(orders)
         Object.keys(orders).forEach(key => {
           const order = orders[key]
           resultOrders.push(new Order(order.name, order.phone,
@@ -54,19 +54,19 @@ export default {
         })
        
         commit('loadOrders', resultOrders)
-       // commit('setLoading', false)
+        commit('setLoading', false)
       } catch (error) {
-        // commit('setError', error.message)
-        // commit('setLoading', false)
+         commit('setError', error.message)
+         commit('setLoading', false)
       }
      },
      /*eslint-disable*/
     async markOrderDone ({commit}, payload) {
-   //  commit('clearError')
+     commit('clearError')
       try {
-        await firebase.database().ref(`/orders`).child(payload).update({
-          done: true
-        })
+        // await firebase.database().ref(`/orders`).child(payload).update({
+        console.log(await firebase.database().ref(`/orders`).child(payload))  
+
       }
        catch (error) {
         commit('setError', error.message)

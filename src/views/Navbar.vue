@@ -1,6 +1,6 @@
 <template>
 
-  <nav>
+  <div>
     <!-- <v-toolbar====v-app-bar -->
     <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
       <!-- SEMESH -->
@@ -89,7 +89,13 @@
         </v-list>
       
     </v-navigation-drawer>
-  </nav>
+    <!-- <v-content>
+
+      <router-view></router-view>
+
+    </v-content> -->
+    
+  </div>
 </template>
 
 <script>
