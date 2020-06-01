@@ -49,8 +49,8 @@ export default {
         // console.log(orders)
         Object.keys(orders).forEach(key => {
           const order = orders[key]
-          resultOrders.push(new Order(order.name, order.phone,
-             order.productId, order.done, key))
+          resultOrders.push(new Order(order.name, order.phone,order.quantity,
+            order.collection,order.productId,order.done, key))
         })
        
         commit('loadOrders', resultOrders)
@@ -61,13 +61,13 @@ export default {
       }
      },
      /*eslint-disable*/
-    async markOrderDone ({commit}, payload) {
+    async markOrderDone ({commit},payload) {
      commit('clearError')
-      try {
-        // await firebase.database().ref(`/orders`).child(payload).update({
-        console.log(await firebase.database().ref(`/orders`).child(payload))  
-
-      }
+     try {
+      await firebase.database().ref(`/orders`).child(payload).update({
+        done: true
+      })
+    } 
        catch (error) {
         commit('setError', error.message)
         throw error

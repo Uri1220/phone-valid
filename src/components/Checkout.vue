@@ -67,6 +67,9 @@ export default {
       })
       .catch(() => {})
     }
+    // markDone (order) {
+    //   console.log(order)     
+    // }
   },
   created () {
     this.$store.dispatch('fetchOrders')
