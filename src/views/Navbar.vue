@@ -113,9 +113,9 @@ export default {
           url: "/register"
         },
         {
-          title: "Cart",
+          title: "Orders",
           icon: "mdi-moped",
-          url: "/linoleum/sinteros/checkout"
+          url: "/checkout"
         },
         {
           title: "New Product",

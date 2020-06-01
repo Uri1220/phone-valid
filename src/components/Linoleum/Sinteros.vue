@@ -21,7 +21,12 @@
         <!-- button navigation -->
         <v-flex>
           Коллекции Синтерос:
-         <v-bottom-navigation v-model="bottomNav">
+         <v-bottom-navigation grow
+          v-model="bottomNav"
+          :value="activeBtn"
+          color="blue"
+           background-color="rgba(0, 0, 0, 0.1)"
+          >
             <v-btn v-for="(link,i) in getColSin" :key="i" :value="link" >
               <span>{{link}}</span>
               <!-- <v-icon>mdi-home</v-icon> -->
@@ -50,8 +55,9 @@
             </v-card-text>
             <v-card-actions>
               <v-spacer></v-spacer>
-              <v-btn text :to="'/ad/' + ad.id">Open</v-btn>
-              <v-btn raised class="primary">Buy</v-btn>
+              <v-btn text :to="'/ad/' + ad.id">Подробнее</v-btn>
+              <!-- <v-btn raised class="primary" @click="addToCart">Buy</v-btn> -->
+              <app-buy-dialog :product="ad"></app-buy-dialog>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -67,7 +73,8 @@ export default {
   data: () => ({
     sinter: [],
     bottomNav: "",
-    bread_items: [
+    activeBtn:1,
+         bread_items: [
       {
         text: "Главная",
         disabled: false,
@@ -87,7 +94,8 @@ export default {
         text: "Синтерос",
         disabled: true,
         href: "/catalog/linoleum/sinteros"
-      }
+      },
+      
     ]
   }),
   async mounted() {
@@ -95,28 +103,16 @@ export default {
   },
   computed: {
     ...mapGetters(["getSinteros", "getColSin"]),
+
     filteredProd() {
       let products = this.getSinteros;
       if (this.bottomNav)
         products = products.filter(p => p.cn === this.bottomNav);
       return products;
     }
-  },  
+  },
+  methods:{
+   
+  }  
 };
 </script>
-computed:{
-     filteredProd(){
-       let products = this.books
-       if(this.searchTerm)
-       products=products.filter(p=>p.title.toLowerCase().indexOf(this.searchTerm.toLowerCase())>0
-      //  || p.description.toLowerCase().indexOf(this.searchTerm.toLowerCase())>0
-       )
-       if(this.wid.length)
-       products=products.filter(p=>this.wid.filter(val=>p.width.indexOf(val)
-        !== -1).length >0)
-
-       return products
-     },
-      books(){
-      return this.$store.getters.getProducts
-    }

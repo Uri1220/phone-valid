@@ -7,6 +7,7 @@ import Linoleum from '../components/Linoleum/Linoleum.vue'
 import Sinteros from '../components/Linoleum/Sinteros.vue'
 import Juteks from '../components/Linoleum/Juteks.vue'
 import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
+import Checkout from '../components/Checkout'
 
 
 Vue.use(VueRouter)
@@ -21,6 +22,12 @@ Vue.use(VueRouter)
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: Checkout,
+      // beforeEnter: AuthGuard
     },
     {
       path: '/register',

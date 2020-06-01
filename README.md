@@ -1,2 +1,4 @@
-Страница Синтерос работает
-есть выборка по коллекциям 
+checkbox in orders не раб 
+[vuex] unknown mutation type: setError
+запись в базу заказа работает
+ 

@@ -3,12 +3,12 @@ import App from './App.vue'
 import router from './router'
 import vuetify from './plugins/vuetify';
 import store from '../src/store/index';
-
+import BuyDialogComponent from '@/components/BuyDialog'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-
+Vue.component('app-buy-dialog', BuyDialogComponent)
 Vue.config.productionTip = false
 
 const firebaseApp=firebase.initializeApp({apiKey: "AIzaSyDx2acOEd3EXtE3-ejjRmf4_n2QW1Dcxdg",
@@ -23,6 +23,7 @@ measurementId: "G-15R9YQ9NZK"})
  
  
 Vue.$db=db
+
 
 let app
 
