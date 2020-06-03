@@ -21,7 +21,7 @@
         <!-- button navigation -->
         <v-flex>
           Коллекции Синтерос:
-         <v-bottom-navigation grow
+         <v-bottom-navigation 
           v-model="bottomNav"
           :value="activeBtn"
           color="blue"
@@ -81,18 +81,13 @@ export default {
         href: "/"
       },
       {
-        text: "Каталог",
-        disabled: false,
-        href: "/catalog/"
-      },
-      {
         text: "Линолеум",
         disabled: false,
         href: "/catalog/linoleum/"
       },
       {
         text: "Синтерос",
-        disabled: true,
+        disabled: false,
         href: "/catalog/linoleum/sinteros"
       },
       

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
  import user from './modules/users'
 import linoleum from './modules/linoleum'
 import sinteros from './modules/linoleum/sinteros'
+import juteks from './modules/linoleum/juteks'
 import common from './modules/common'
 import order from './order'
  
@@ -14,6 +15,7 @@ export default new Vuex.Store({
     user,
     linoleum,
     sinteros,
+    juteks,
     order,
     common
   }
