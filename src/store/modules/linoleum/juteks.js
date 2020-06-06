@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import { Set } from 'core-js';
+import firebase from 'firebase/app';
+import 'firebase/database';
 
 export default {
   state:{
@@ -20,17 +22,15 @@ export default {
 
   },
  
-  actions: {    
+  actions: {  
+     // READ BASE DATA  
     async fetchJuteks({commit}) {
-      try {  
-        
-       // READ
+      try {        
         Vue.$db.collection('Juteks').get().then((querySnapshot) => {
           let linitems=[]
            let uniq=[]
         
-          querySnapshot.forEach((doc) => {
-           
+          querySnapshot.forEach((doc) => {           
             //  console.log(`${doc.id} => ${doc.data()}`);
             const data= doc.data()
             let linitem={
@@ -38,8 +38,7 @@ export default {
               cn:data.cn,
               im:data.im,
               pr:data.pr,
-              descr:data.descr,
-
+              descr:data.descr
             } 
             let uniqitem={
               cn:data.cn,
@@ -70,10 +69,27 @@ export default {
         console.log (e)
         
       }
-    },
-    
+   },
+
+   async fetchJutDes ({commit}) {
+    commit('setLoading', true)
+    commit('clearError')
+
+   try {
+     const jutDes  = (await firebase.database().ref(`/jutDescr`).once('value')).val()||{}
+      //  console.log(jutDes)
+     return Object.keys(jutDes).map(key=>({...jutDes[key],id:key}))
+
+       // commit('setLoading', false)
+   } catch (error) {
+      commit('setError', error.message)
+     // commit('setLoading', false)
+   }
   },
-  getters:{
+
+ },
+     
+   getters:{
     getJuteks:(state)=>state.jut,
     getColJut:(state)=>state.coljut,
 

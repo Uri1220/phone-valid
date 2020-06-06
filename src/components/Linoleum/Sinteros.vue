@@ -98,6 +98,9 @@ export default {
   },
   computed: {
     ...mapGetters(["getSinteros", "getColSin"]),
+    getGescription(){
+      return this.getColSin.filter
+    },
 
     filteredProd() {
       let products = this.getSinteros;
