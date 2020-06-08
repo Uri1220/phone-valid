@@ -7,7 +7,7 @@ export default {
   state:{
     jut:[], 
     coljut:[],
-    // description:[]   
+     description:[]   
   },
   mutations:{
     SET_JUT(state,payload){
@@ -77,7 +77,7 @@ export default {
 
    try {
      const jutDes  = (await firebase.database().ref(`/jutDescr`).once('value')).val()||{}
-      //  console.log(jutDes)
+       // console.log(jutDes)
      return Object.keys(jutDes).map(key=>({...jutDes[key],id:key}))
 
        // commit('setLoading', false)

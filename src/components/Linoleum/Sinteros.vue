@@ -1,5 +1,8 @@
 <template>
   <div>
+     <!-- <div> -->
+        <slot>hjhjjh</slot>
+      <!-- </div> -->
     <v-container>
       <v-layout column>
         <v-flex>
@@ -37,7 +40,9 @@
     </v-container>
 
     <!-- //////////////////////////////////////////////////// -->
-    <v-container grid-list-lg>     
+    <v-container grid-list-lg>  
+     
+
       <v-layout row wrap>
         <v-flex xs12 sm6 md4 v-for="ad of filteredProd" :key="ad.id">
           <v-card>

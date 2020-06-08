@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Login from '../components/Auth/Login'
 import Home from '../views/Home.vue'
 import Register from '../components/Auth/Register.vue'
-import Linoleum from '../components/Linoleum/Linoleum.vue'
+import LinoleumMain from '../components/Linoleum/LinoleumMain.vue'
 import Sinteros from '../components/Linoleum/Sinteros.vue'
 import Juteks from '../components/Linoleum/Juteks.vue'
 import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
@@ -37,8 +37,8 @@ Vue.use(VueRouter)
     },
     {
       path: '/linoleum/',
-      name: 'Linoleum',
-      component:Linoleum
+      name: 'LinoleumMain',
+      component:LinoleumMain
     },
     {
       path: '/linoleum/sinteros/',
