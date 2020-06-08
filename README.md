@@ -1,1 +1,1 @@
-description заработало из cloud надо добшлифорать
+description в карточке более менее

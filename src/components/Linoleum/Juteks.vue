@@ -1,6 +1,6 @@
 <template>
   <div>
-    {{filteredDescription}}
+    <!-- BREADCRUMBS -->
     <div>
       <div class="bc">
         <div class="bb">
@@ -15,27 +15,25 @@
           {{ bottomNav }}
         </div>
       </div>
-
-      <div class="des">
+      <!-- DESCRIPTION INFO -->
+      <!-- <div class="des">
         <span class="d1">
-          <div class="pp" v-for="(value, i) in filteredDescription" :key="i">
-          <p class="ppp" v-if="(i+1)%2">
-           
+          <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
+          <p class="ppp" v-if="(i+1)%2">           
             <b>{{ value }}</b>
           </p>
         </div>
         </span>
         
         <div class="d2">
-           <div class="pp" v-for="(value, i) in filteredDescription" :key="i">
-          <p class="ppp" v-if="i%2">
-          
+           <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
+          <p class="ppp" v-if="i%2">          
             {{ value }}
           </p>
         </div>
         </div>
        
-      </div>
+      </div>-->
 
       <!-- Bottom Navigations -->
       <div class="btn">
@@ -51,19 +49,37 @@
           </v-btn>
         </v-bottom-navigation>
       </div>
-      <!-- DESCRIPTION -->
-      <!-- <v-card class="d-inline-block mx-auto" v-for="des of filteredDescription" :key="des.id">
+      <!-- DESCRIPTION Img -->
+      <v-card class="d-inline-block mx-auto" v-for="des of filteredDescriptionImg" :key="des.id">
         <v-container>
           <v-row justify="space-between">
             <v-col cols="auto">
               <v-img :src="des.im" height="250px" width="350px"></v-img>
             </v-col>
             <v-col>
-              <v-card-text width="200">{{des.descr}}</v-card-text>
+              <v-card-text >
+                <!-- {{des.descr}} -->
+
+                <div class="des">
+                  <span class="d1">
+                    <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
+                      <p class="ppp" v-if="(i+1)%2">
+                        <b>{{ value }}</b>
+                      </p>
+                    </div>
+                  </span>
+
+                  <div class="d2">
+                    <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
+                      <p class="ppp" v-if="i%2">{{ value }}</p>
+                    </div>
+                  </div>
+                </div>
+              </v-card-text>
             </v-col>
           </v-row>
         </v-container>
-      </v-card>-->
+      </v-card>
     </div>
     <!-- //////////////////////////////////////////////////// -->
 
@@ -110,8 +126,6 @@
   </div>
 </template>
 
-
-
 <script>
 import { mapGetters } from "vuex";
 
@@ -143,9 +157,6 @@ export default {
   }),
   async mounted() {
     if (!this.jut.length) this.jut = await this.$store.dispatch("fetchJuteks");
-
-    this.descript = await this.$store.dispatch("fetchJutDes");
-    //  console.log(this.descript)
   },
 
   computed: {
@@ -157,28 +168,23 @@ export default {
         products = products.filter(p => p.cn === this.bottomNav);
       return products;
     },
-    filteredDescription() {
-      //  let ar1=[]
+    filteredDescriptionInfo() {
       let prod = [];
-      //  let str=''
       let products = this.getJuteks;
       if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
-      // let obj =prod[0]
-      //  str=obj.descr
-      // alert(obj["descr"])
-      //  let str=JSON.parse('obj')
-      // prod.forEach(element => {console.log(element)});
-      const nAr = prod.map(p => {
+      const arrFromString = prod.map(p => {
         return p.descr.split("`");
       });
-
-      // for(let i=0;i<products.length;i=i+2){
-      //   ar1.push(products[i])
-
-      // }
-      console.log(nAr[0]);
+      // console.log(arrFromString[0]);
       // return products;
-      return nAr[0];
+      return arrFromString[0];
+    },
+    filteredDescriptionImg() {
+      let prod = [];
+      let products = this.getJuteks;
+      if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
+      // console.log(prod);
+      return prod;
     }
   },
   methods: {}
@@ -202,23 +208,24 @@ export default {
   grid-template-columns: 145px 1fr;
   font-size: 14px;
 }
-.d1{
+.d1 {
   background: rgb(247, 237, 197);
   position: relative;
   /* margin-left: 10px; */
 }
-.d2{
+.d2 {
   background: rgb(185, 241, 245);
 }
-.pp{
+.pp {
   /* position: relative;
   top: -15px; */
   /* margin: 0;
   padding: 0; */
 }
-.ppp{position: relative;
-  top:5px ;
-  margin-bottom:0 0 0 0 ;
+.ppp {
+  position: relative;
+  top: 5px;
+  margin-bottom: 0 0 0 0;
 }
 </style>
  
