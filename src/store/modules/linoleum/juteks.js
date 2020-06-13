@@ -1,13 +1,11 @@
 import Vue from 'vue'
 import { Set } from 'core-js';
-import firebase from 'firebase/app';
 import 'firebase/database';
 
 export default {
   state:{
     jut:[], 
     coljut:[],
-     description:[]   
   },
   mutations:{
     SET_JUT(state,payload){
@@ -16,9 +14,9 @@ export default {
     SET_COL_JUT(state,payload){
     state.coljut=payload},
 
-    SET_DESCRIPTIN(state,payload){
-      state.description=payload
-    }
+    // SET_DESCRIPTIN(state,payload){
+    //   state.description=payload
+    // }
 
   },
  
@@ -38,7 +36,9 @@ export default {
               cn:data.cn,
               im:data.im,
               pr:data.pr,
-              descr:data.descr
+              descr:data.descr,
+              str:data.str
+
             } 
             let uniqitem={
               cn:data.cn,
@@ -71,21 +71,21 @@ export default {
       }
    },
 
-   async fetchJutDes ({commit}) {
-    commit('setLoading', true)
-    commit('clearError')
+  //  async fetchJutDes ({commit}) {
+  //   commit('setLoading', true)
+  //   commit('clearError')
 
-   try {
-     const jutDes  = (await firebase.database().ref(`/jutDescr`).once('value')).val()||{}
-       // console.log(jutDes)
-     return Object.keys(jutDes).map(key=>({...jutDes[key],id:key}))
+  //  try {
+  //    const jutDes  = (await firebase.database().ref(`/jutDescr`).once('value')).val()||{}
+  //      // console.log(jutDes)
+  //    return Object.keys(jutDes).map(key=>({...jutDes[key],id:key}))
 
-       // commit('setLoading', false)
-   } catch (error) {
-      commit('setError', error.message)
-     // commit('setLoading', false)
-   }
-  },
+  //      // commit('setLoading', false)
+  //  } catch (error) {
+  //     commit('setError', error.message)
+  //    // commit('setLoading', false)
+  //  }
+  // },
 
  },
      
@@ -93,11 +93,7 @@ export default {
     getJuteks:(state)=>state.jut,
     getColJut:(state)=>state.coljut,
 
-    // getDescription(state){
-    //   return state.jut.filter(p=>{
-    //      return
-    //   })
-    // }
+    
 
   }
 }

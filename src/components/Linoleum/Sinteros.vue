@@ -1,69 +1,114 @@
 <template>
   <div>
-     <!-- <div> -->
-        <slot>hjhjjh</slot>
-      <!-- </div> -->
-    <v-container>
-      <v-layout column>
-        <v-flex>
-          <v-layout row>
-            <div>
-              <v-breadcrumbs large :items="bread_items">
-                <template v-slot:divider>
-                  <v-icon>mdi-chevron-right</v-icon>
-                </template>
-              </v-breadcrumbs>
-            </div>
-            <!-- Справа от крошек прилепляю -->
-            <div pt-5>
-             <v-icon>mdi-chevron-right</v-icon>
-              {{ bottomNav }}
-            </div>
-          </v-layout>
-        </v-flex>
-        <!-- button navigation -->
-        <v-flex>
-          Коллекции Синтерос:
-         <v-bottom-navigation 
+    
+                          <!-- BREADCRUMBS -->
+    <div>
+      <div class="bc">
+        <div class="bb">
+          <v-breadcrumbs :items="bread_items">
+         
+          </v-breadcrumbs>
+        </div>
+        <div class="cc">
+          <!-- <v-icon small>mdi-chevron-right</v-icon> -->
+          /{{ bottomNav }}
+        </div>
+      </div>
+                   <!-- DESCRIPTION INFO -->
+     
+      <!-- Bottom Navigations -->
+      <p style="text-align:center ">КОЛЛЕКЦИИ</p>
+
+      <div class="btnnav">
+        <v-bottom-navigation  
           v-model="bottomNav"
           :value="activeBtn"
           color="blue"
-           background-color="rgba(0, 0, 0, 0.1)"
-          >
-            <v-btn v-for="(link,i) in getColSin" :key="i" :value="link" >
-              <span>{{link}}</span>
-              <!-- <v-icon>mdi-home</v-icon> -->
-            </v-btn>
-          </v-bottom-navigation>
-        </v-flex>
-      </v-layout>
-    </v-container>
+          background-color="rgba(0, 0, 0, 0.1)"
+        >
+          <v-btn v-for="(link,i) in getColSin" :key="i" :value="link">
+            <span>{{link}}</span>
+          </v-btn>
+        </v-bottom-navigation>
+      </div>
+                         <!-- DESCRIPTION Img -->
+      <v-container>
+        <v-layout row wrap>
+          <!-- <v-flex xs12 sm6 md4 v-for="ad of filteredProd" :key="ad.id"> -->
+          <v-flex xs12 sm6 md4>
+            <p class="colname">ЛИНОЛЕУМ СИНТЕРОС {{bottomNav}}</p>
+            <div v-for="des of descriptionImg" :key="des.id">
+              <v-img :src="des.im" height="250px" width="300px"></v-img>
+            </div>
+           
+            
+          </v-flex>
+          <v-flex xs12 sm6 md4>
+            <div class="des">
+              
+              <div class="str" v-for="des of descriptionImg" :key="des.id">
+                <p>{{des.str}}</p>
+                <hr />
+              </div>
+              
+              
 
+              <div class="d1">
+                <div v-for="(value, i) in descriptionInfo" :key="i">
+                  <p v-if="(i+1)%2">
+                    <b>{{ value }}</b>
+                  </p>
+                </div>
+              </div>
+
+              <div class="d2">
+                <div v-for="(value, i) in descriptionInfo" :key="i">
+                  <p v-if="i%2">{{ value }}</p>
+                </div>
+              </div>
+            </div>
+          </v-flex>
+          <v-flex></v-flex>
+        </v-layout>
+      </v-container>
+    </div>
     <!-- //////////////////////////////////////////////////// -->
-    <v-container grid-list-lg>  
-     
 
+    <p style="text-align:center;margin-top: 10px; ">ДИЗАЙНЫ</p>
+
+    <v-container grid-list-sm>
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 v-for="ad of filteredProd" :key="ad.id">
-          <v-card>
-            <p class="headline mb-0">Линолеум Синтерос(РФ) {{ad.id}}</p>
-            <v-img :src="ad.im" height="200px" width="200px"></v-img>
-            <v-card-text>
-              <v-row>
-                <p class="text-right">Название коллекции {{ad.cn}}</p>
-                <p>Класс применения{{ad.class}}</p>
-                <p>Основа{{ad.base}}</p>
-                <p>Толщина покрытия общая, мм.{{ad.to}}</p>
-                <p>Толщина защитного слоя, мм.{{ad.tzs}}</p>
-                <p>Ширина рулона, м {{ad.wi}}</p>
-              </v-row>
-            </v-card-text>
+        <v-flex xs12 sm6 md4 lg3 v-for="ad of filteredProd" :key="ad.id">
+          <v-card class="mx-auto" max-width="344">
+            <!-- <v-responsive :aspect-ratio="16/9">
+            <v-img :src="ad.im" ></v-img>
+            </v-responsive>-->
+            <v-img :src="ad.im" height="250px" width="250px"></v-img>
+
+            <v-card-title>{{ad.id}}</v-card-title>
+
+            <v-card-subtitle>Цена: {{ad.pr}} руб/м2</v-card-subtitle>
+
+            <app-buy-dialog :product="ad"></app-buy-dialog>
+
             <v-card-actions>
+
+              <v-btn color="purple" text>Explore</v-btn>
+
               <v-spacer></v-spacer>
-              <v-btn text :to="'/ad/' + ad.id">Подробнее</v-btn>
-              <!-- <v-btn raised class="primary" @click="addToCart">Buy</v-btn> -->
-              <app-buy-dialog :product="ad"></app-buy-dialog>
+
+              <v-btn icon @click="show = !show">
+                <v-icon>{{ show ? 'mdi-chevron-up' : 'mdi-chevron-down' }}</v-icon>
+              </v-btn>
             </v-card-actions>
+
+            <v-expand-transition>
+              <div v-show="show">
+                <v-divider></v-divider>
+
+                <v-card-text></v-card-text>
+              </div>
+            </v-expand-transition>
           </v-card>
         </v-flex>
       </v-layout>
@@ -76,10 +121,13 @@ import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    sinter: [],
+    show: false,
+    jut: [],
+    descript: [],
     bottomNav: "",
-    activeBtn:1,
-         bread_items: [
+    activeBtn: 1,
+    // selectedCollection:[],
+    bread_items: [
       {
         text: "Главная",
         disabled: false,
@@ -88,34 +136,107 @@ export default {
       {
         text: "Линолеум",
         disabled: false,
-        href: "/catalog/linoleum/"
+        href: "/linoleum/"
       },
       {
         text: "Синтерос",
         disabled: false,
-        href: "/catalog/linoleum/sinteros"
-      },
-      
+        href: "/linoleum/sinteros/"
+      }
     ]
   }),
   async mounted() {
-    this.sinter = await this.$store.dispatch("fetchSinteros");
+    if (!this.jut.length) this.jut = await this.$store.dispatch("fetchSinteros");
+
   },
+
   computed: {
     ...mapGetters(["getSinteros", "getColSin"]),
-    getGescription(){
-      return this.getColSin.filter
-    },
+                                  // in bottomNavigation
 
     filteredProd() {
       let products = this.getSinteros;
       if (this.bottomNav)
         products = products.filter(p => p.cn === this.bottomNav);
       return products;
+    },
+    descriptionInfo() {
+      let prod = [];
+      let products = this.getSinteros;
+      if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
+      const arrFromString = prod.map(p => {
+        return p.descr.split("`");
+      });
+      // console.log(arrFromString[0]);
+      // return products;
+      return arrFromString[0];
+    },
+    descriptionImg() {
+      let prod = [];
+      let products = this.getSinteros;
+      if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
+      //  console.log(prod[0]);
+      return prod;
     }
   },
-  methods:{
-   
-  }  
+  
+  methods: {}
 };
 </script>
+<style>
+/* * {
+  margin: 0;
+  padding: 0;
+} */
+
+.bc {
+  display: grid;
+  grid-template-columns: 278px 1fr;
+}
+.bb{
+    padding:0;
+
+}
+.cc {
+  align-self: center;
+  font-size: 14px;
+}
+.btn {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+/* ____________________info________________________ */
+.des {
+  display: grid;
+  grid-template-columns: 145px 1fr;
+  font-size: 12px;
+  font-family: "MuseoSansCyrl-300", "Helvetica Neue", Verdana, Arial, sans-serif;
+  background: rgb(247, 213, 213);
+  margin-left: 10px;
+}
+.des > div {
+  background: rgb(250, 245, 245);
+  padding-top: 5px;
+}
+.des > div.str {
+  grid-column: 1/-1;
+  grid-auto-rows: auto;
+  margin: 5px 0;
+  background: rgb(232, 245, 220);
+}
+
+.colname {
+  /* font-family: 'MuseoSansCyrl-900'; */
+  font-family: "MuseoSansCyrl-300", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 18px;
+  padding-top: 8px;
+  text-transform: uppercase;
+  color: #000;
+}
+.btnnav{
+    padding: 0;
+    margin: 0;
+  min-width: 70px;
+}
+</style>
+ 

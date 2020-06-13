@@ -32,22 +32,7 @@
 
               <v-container>
                 <v-row dense="">
-                  <!-- <v-col cols="12">
-                    <v-card color="#385F73" dark>
-                      <v-card-title class="headline"
-                        >Unlimited music now</v-card-title
-                      >
-
-                      <v-card-subtitle
-                        >Listen to your favorite artists and albums whenever and
-                        wherever, online and offline.</v-card-subtitle
-                      >
-
-                      <v-card-actions>
-                        <v-btn text>Listen Now</v-btn>
-                      </v-card-actions>
-                    </v-card>
-                  </v-col> -->
+                 
 
                   <v-col v-for="(item, i) in items" :key="i" cols="12">
                     <v-card :color="item.color" dark >
@@ -88,7 +73,6 @@
 </template>
 
 <script>
-// import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
@@ -124,20 +108,9 @@ export default {
     ],
   }),
   async mounted() {
-    // this.sinter = await this.$store.dispatch("fetchSinteros");
   },
   computed: {
-    // ...mapGetters(["getSinteros", "getColSin"]),
-    // getGescription() {
-    //   return this.getColSin.filter;
-    // },
-
-    // filteredProd() {
-    //   let products = this.getSinteros;
-    //   if (this.bottomNav)
-    //     products = products.filter((p) => p.cn === this.bottomNav);
-    //   return products;
-    // },
+   
   },
   methods: {},
 };

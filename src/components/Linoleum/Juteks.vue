@@ -1,85 +1,76 @@
 <template>
   <div>
-    <!-- BREADCRUMBS -->
+    
+                          <!-- BREADCRUMBS -->
     <div>
       <div class="bc">
         <div class="bb">
           <v-breadcrumbs :items="bread_items">
-            <template v-slot:divider>
-              <v-icon>mdi-chevron-right</v-icon>
-            </template>
+           
           </v-breadcrumbs>
         </div>
         <div class="cc">
-          <v-icon small>mdi-chevron-right</v-icon>
-          {{ bottomNav }}
+          <!-- <v-icon small>mdi-chevron-right</v-icon> -->
+          /{{ bottomNav }}
         </div>
       </div>
-      <!-- DESCRIPTION INFO -->
-      <!-- <div class="des">
-        <span class="d1">
-          <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
-          <p class="ppp" v-if="(i+1)%2">           
-            <b>{{ value }}</b>
-          </p>
-        </div>
-        </span>
-        
-        <div class="d2">
-           <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
-          <p class="ppp" v-if="i%2">          
-            {{ value }}
-          </p>
-        </div>
-        </div>
-       
-      </div>-->
-
+                   <!-- DESCRIPTION INFO -->
+     
       <!-- Bottom Navigations -->
-      <div class="btn">
-        <!-- <p style="text-align: center">Коллекции Juteks:</p> -->
-        <v-bottom-navigation
+      <p style="text-align:center ">КОЛЛЕКЦИИ</p>
+
+      <div class="btnnav">
+        <v-bottom-navigation  
           v-model="bottomNav"
           :value="activeBtn"
           color="blue"
           background-color="rgba(0, 0, 0, 0.1)"
         >
-          <v-btn v-for="(link,i) in getColJut" :key="i" :value="link">
+          <v-btn class="btnavitem" v-for="(link,i) in getColJut" :key="i" :value="link">
             <span>{{link}}</span>
           </v-btn>
         </v-bottom-navigation>
       </div>
-      <!-- DESCRIPTION Img -->
-      <v-card class="d-inline-block mx-auto" v-for="des of filteredDescriptionImg" :key="des.id">
-        <v-container>
-          <v-row justify="space-between">
-            <v-col cols="auto">
-              <v-img :src="des.im" height="250px" width="350px"></v-img>
-            </v-col>
-            <v-col>
-              <v-card-text >
-                <!-- {{des.descr}} -->
+                         <!-- DESCRIPTION Img -->
+      <v-container>
+        <v-layout row wrap>
+          <!-- <v-flex xs12 sm6 md4 v-for="ad of filteredProd" :key="ad.id"> -->
+          <v-flex xs12 sm6 md4>
+            <p class="colname">ЛИНОЛЕУМ JUTEKS (ЮТЕКС) {{bottomNav}}</p>
+            <div v-for="des of descriptionImg" :key="des.id">
+              <v-img :src="des.im" height="250px" width="300px"></v-img>
+            </div>
+           
+            
+          </v-flex>
+          <v-flex xs12 sm6 md4>
+            <div class="des">
+              
+              <div class="str" v-for="des of descriptionImg" :key="des.id">
+                <p>{{des.str}}</p>
+                <hr />
+              </div>
+              
+              
 
-                <div class="des">
-                  <span class="d1">
-                    <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
-                      <p class="ppp" v-if="(i+1)%2">
-                        <b>{{ value }}</b>
-                      </p>
-                    </div>
-                  </span>
-
-                  <div class="d2">
-                    <div class="pp" v-for="(value, i) in filteredDescriptionInfo" :key="i">
-                      <p class="ppp" v-if="i%2">{{ value }}</p>
-                    </div>
-                  </div>
+              <div class="d1">
+                <div v-for="(value, i) in descriptionInfo" :key="i">
+                  <p v-if="(i+1)%2">
+                    <b>{{ value }}</b>
+                  </p>
                 </div>
-              </v-card-text>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
+              </div>
+
+              <div class="d2">
+                <div v-for="(value, i) in descriptionInfo" :key="i">
+                  <p v-if="i%2">{{ value }}</p>
+                </div>
+              </div>
+            </div>
+          </v-flex>
+          <v-flex></v-flex>
+        </v-layout>
+      </v-container>
     </div>
     <!-- //////////////////////////////////////////////////// -->
 
@@ -87,7 +78,7 @@
 
     <v-container grid-list-sm>
       <v-layout row wrap>
-        <v-flex xs12 sm6 md4 v-for="ad of filteredProd" :key="ad.id">
+        <v-flex xs12 sm6 md4 lg3 v-for="ad of filteredProd" :key="ad.id">
           <v-card class="mx-auto" max-width="344">
             <!-- <v-responsive :aspect-ratio="16/9">
             <v-img :src="ad.im" ></v-img>
@@ -101,7 +92,6 @@
             <app-buy-dialog :product="ad"></app-buy-dialog>
 
             <v-card-actions>
-              <!-- <v-btn text>Share</v-btn> -->
 
               <v-btn color="purple" text>Explore</v-btn>
 
@@ -136,7 +126,7 @@ export default {
     descript: [],
     bottomNav: "",
     activeBtn: 1,
-
+    // selectedCollection:[],
     bread_items: [
       {
         text: "Главная",
@@ -157,6 +147,13 @@ export default {
   }),
   async mounted() {
     if (!this.jut.length) this.jut = await this.$store.dispatch("fetchJuteks");
+
+    // this.getJuteks.find((item) => {
+    //     if (item.id === this.bottomNav) {
+    //       this.selectedCollection = item
+    //     }
+    //     console.log(this.selectedCollection)
+    //   })
   },
 
   computed: {
@@ -168,7 +165,7 @@ export default {
         products = products.filter(p => p.cn === this.bottomNav);
       return products;
     },
-    filteredDescriptionInfo() {
+    descriptionInfo() {
       let prod = [];
       let products = this.getJuteks;
       if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
@@ -179,21 +176,31 @@ export default {
       // return products;
       return arrFromString[0];
     },
-    filteredDescriptionImg() {
+    descriptionImg() {
       let prod = [];
       let products = this.getJuteks;
       if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
-      // console.log(prod);
+      //  console.log(prod[0]);
       return prod;
     }
   },
+  
   methods: {}
 };
 </script>
 <style>
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .bc {
   display: grid;
   grid-template-columns: 278px 1fr;
+}
+bb{
+    padding:0;
+
 }
 .cc {
   align-self: center;
@@ -203,29 +210,37 @@ export default {
   display: grid;
   grid-template-columns: 1fr;
 }
+/* ____________________info________________________ */
 .des {
   display: grid;
   grid-template-columns: 145px 1fr;
-  font-size: 14px;
+  font-size: 12px;
+  font-family: "MuseoSansCyrl-300", "Helvetica Neue", Verdana, Arial, sans-serif;
+  background: rgb(247, 213, 213);
+  margin-left: 10px;
 }
-.d1 {
-  background: rgb(247, 237, 197);
-  position: relative;
-  /* margin-left: 10px; */
+.des > div {
+  background: rgb(250, 245, 245);
+  padding-top: 5px;
 }
-.d2 {
-  background: rgb(185, 241, 245);
+.des > div.str {
+  grid-column: 1/-1;
+  grid-auto-rows: auto;
+  margin: 5px 0;
+  background: rgb(232, 245, 220);
 }
-.pp {
-  /* position: relative;
-  top: -15px; */
-  /* margin: 0;
-  padding: 0; */
+
+.colname {
+  /* font-family: 'MuseoSansCyrl-900'; */
+  font-family: "MuseoSansCyrl-300", "Helvetica Neue", Verdana, Arial, sans-serif;
+  font-size: 18px;
+  padding-top: 8px;
+  text-transform: uppercase;
+  color: #000;
 }
-.ppp {
-  position: relative;
-  top: 5px;
-  margin-bottom: 0 0 0 0;
-}
+/* .btnnav{
+  min-width: 50px;
+} */
+
 </style>
  

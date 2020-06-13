@@ -26,92 +26,22 @@
       <router-view></router-view>
     </v-content> 
 
-    <Footer />
+    <!-- <Footer /> -->
   </v-app>
 </template>
 
 <script>
 import Navbar from "../src/views/Navbar";
-import Footer from "../src/views/Footer";
+// import Footer from "../src/views/Footer";
 
 export default {
   name: "App",
   components: {
     Navbar,
-    Footer,
+    // Footer,
   },
-  data: () => ({
-    sinteros: {
-      collection_name: "Juteks",
-
-      sinteros_items: [
-        {
-          title: "Парма",
-          url: "/catalog/linoleum/sinteros/parma"
-        },
-        {
-          title: "Версаль",
-          url: "/catalog/linoleum/sinteros/versal"
-        },
-        {
-          title: "Печора",
-          url: "/catalog/linoleum/sinteros/pechora "
-        },
-        {
-          title: "Атланта",
-          url: "/catalog/linoleum/sinteros/atlanta"
-        },
-        {
-          title: "Бавария",
-          url: "/catalog/linoleum/sinteros/bavaria "
-        },
-        {
-          title: "Санлайт",
-          url: "/catalog/linoleum/sinteros/sanlite "
-        }
-      ]
-    },
-    juteks: {
-      collection_name: "Juteks",
-      juteks_items: [
-        {
-          title: "Trend",
-          url: "/catalog/linoleum/juteks/trend"
-        },
-        {
-          title: "Megapolis",
-          url: "/catalog/linoleum/juteks/megapolis"
-        },
-        {
-          title: "Spirit",
-          url: "/catalog/linoleum/juteks/spirit"
-        },
-        {
-          title: "Respect",
-          url: "/catalog/linoleum/juteks/respect"
-        },
-        {
-          title: "Flash",
-          url: "/catalog/linoleum/juteks/flash"
-        },
-        {
-          title: "Etnic",
-          url: "/catalog/linoleum/juteks/etnic"
-        },
-        {
-          title: "Glamour",
-          url: "/catalog/linoleum/juteks/glamour"
-        },
-        {
-          title: "Emotion",
-          url: "/catalog/linoleum/juteks/emotion"
-        },
-        {
-          title: "Gost 1812",
-          url: "/catalog/linoleum/juteks/gost1812"
-        }
-      ]
-    },
+  data: () => ({ 
+   
     goods: [
         {
           title: "Линолеум",

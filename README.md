@@ -1,1 +1,1 @@
-description в карточке более менее
+sinteros works

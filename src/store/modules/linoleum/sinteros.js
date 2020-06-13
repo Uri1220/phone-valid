@@ -1,43 +1,40 @@
 import Vue from 'vue'
 import { Set } from 'core-js';
+import 'firebase/database';
 
 export default {
   state:{
     sin:[], 
-    colsin:[]   
+    colsin:[],
   },
   mutations:{
     SET_SINT(state,payload){
       state.sin=payload
     },
-    SET_COL_SIN(state,payload){
-    state.colsin=payload}
+    SET_COL_SINT(state,payload){
+    state.colsin=payload},
+
 
   },
  
-  actions: {    
-    /*eslint-disable*/
-    async fetchSinteros({ commit, dispatch }) {
-      try {  
-        
-       // READ
+  actions: {  
+     // READ BASE DATA  
+    async fetchSinteros({commit}) {
+      try {        
         Vue.$db.collection('Sinteros').get().then((querySnapshot) => {
           let linitems=[]
            let uniq=[]
         
-          querySnapshot.forEach((doc) => {
-           
+          querySnapshot.forEach((doc) => {           
             //  console.log(`${doc.id} => ${doc.data()}`);
             const data= doc.data()
             let linitem={
              id:doc.id,
-              base:data.base,
-              class:data.class,
               cn:data.cn,
               im:data.im,
-              to:data.to,
-              tzs:data.tzs,
-              wi:data.wi        
+              pr:data.pr,
+              descr:data.descr,
+              str:data.str
 
             } 
             let uniqitem={
@@ -50,14 +47,18 @@ export default {
 
           // console.log(uniq)
          // uniq.forEach(i=>console.log(i))
-         const arr= uniq.map(i=>{
-           return i.cn
-         }) 
-        //  console.log(arr)
 
-         let uni = [...new Set(arr)]
-          // console.log(uni)
-         commit('SET_COL_SIN',uni)                 
+          //массив только с коллекциями
+         const arr= uniq.map(i=>{
+           return i.cn 
+         }) 
+         // убрали null
+          const arrnotnull=arr.filter(p=>{if(p !=null){
+            return true
+          }}) 
+          // массив с уникальными значениями
+         let uni = [...new Set(arrnotnull)]
+         commit('SET_COL_SINT',uni)                 
           
         });
 
@@ -65,11 +66,16 @@ export default {
         console.log (e)
         
       }
-    },
-    
-  },
-  getters:{
+   },
+
+   
+
+ },
+     
+   getters:{
     getSinteros:(state)=>state.sin,
-    getColSin:(state)=>state.colsin
+    getColSin:(state)=>state.colsin,
+
+
   }
 }

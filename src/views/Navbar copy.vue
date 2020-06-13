@@ -1,6 +1,6 @@
 <template>
 
-  <div>
+  <v-container>
     <!-- <v-toolbar====v-app-bar -->
     <!-- <v-app-bar app flat dark src="../assets/images/carusel1.jpg"> -->
     <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
@@ -32,7 +32,7 @@
         </v-btn>
       </v-toolbar-items>
       <!-- BUTTON -->
-      <v-app-bar-nav-icon style="margin-right:8px" color="white" @click="drawer=!drawer" 
+      <v-app-bar-nav-icon color="white" @click="drawer=!drawer" 
       class="hidden-md-and-up"></v-app-bar-nav-icon>
     </v-app-bar>
           <!-- 2 tollbar -->
@@ -92,7 +92,7 @@
       
     </v-navigation-drawer>
     
-  </div>
+  </v-container>
 </template>
 
 <script>
