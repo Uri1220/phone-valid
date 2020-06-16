@@ -26,12 +26,11 @@ export default {
     }
   },
   actions: {
-    // async createOrder ({commit}, {name, phone,quantity,collection,productId,ownerId}) {
-    async createOrder ({commit}, {name, phone,quantity,collection,productId}) {
+
+      async createOrder ({commit}, {name, phone,quantity,collection,productId}) {
       const order = new Order(name, phone,quantity,collection,productId,)
-      // commit('clearError')
+       commit('clearError')
       try {
-        // await firebase.database().ref(`/users/${ownerId}/orders`).push(order)
         await firebase.database().ref(`/orders`).push(order)
       }
        catch (error) {
@@ -60,7 +59,6 @@ export default {
          commit('setLoading', false)
       }
      },
-     /*eslint-disable*/
     async markOrderDone ({commit},payload) {
      commit('clearError')
      try {
@@ -73,17 +71,26 @@ export default {
         throw error
       }
       
-    }
+    },
+    async orderDelete ({commit},payload) {
+      commit('clearError')
+      try {
+      //  await firebase.database().ref(`/orders`).child(payload)
+       await firebase.database().ref(`/orders/`+ payload).remove()
+     
+      // commit('loadOrders')
+      // console.log(this.orders)
+     } 
+        catch (error) {
+         commit('setError', error.message)
+         throw error
+       }
+      
+    },
   },
-  getters: {
-    doneOrders (state) {
-      return state.orders.filter(order => order.done)
-    },
-    undoneOrders (state) {
-      return state.orders.filter(order => !order.done)
-    },
-    orders (state, getters) {
-      return getters.undoneOrders.concat(getters.doneOrders)
+  getters: {   
+    orders (state) {
+      return state.orders
     }
   }
 }

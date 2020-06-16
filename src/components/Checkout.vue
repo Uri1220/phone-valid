@@ -1,18 +1,18 @@
 <template>
   <v-container>
-    <v-layout row>
-      <v-flex xs12 class="text-xs-center pt-5" v-if="loading">
+    <v-layout column>
+      <v-flex xs12 sm6 md4 class="text-xs-center pt-5" v-if="loading">
         <!-- loader: -->
         <v-progress-circular
-            :size="100"
+            :size="80"
             :width="4"
-            color="purple"
+            color="blue"
             indeterminate
         ></v-progress-circular>
       </v-flex>
       <v-flex xs12 sm6 offset-sm3 v-else-if="!loading && orders.length !== 0">
-        <h1 class="text-secondary mb-3">Orders</h1>
-        <v-list
+        <h1 class="text-xs-center  mb-3 ">Заказы</h1>
+        <v-list  
           subheader
           two-line
         >
@@ -30,20 +30,25 @@
             </v-list-item-action>
 
             <v-list-item-content>
-              <v-list-item-title>{{ order.name }}</v-list-item-title>
-              <v-list-item-subtitle>{{ order.phone }}</v-list-item-subtitle>
+              <v-list-item-title><b>Имя:</b>{{ order.name }}</v-list-item-title>
+              <v-list-item-subtitle><b>Телефон:</b>{{ order.phone }}</v-list-item-subtitle>
+              <v-list-item-subtitle><b>Коллекция:</b>{{ order.collection }}</v-list-item-subtitle>
+              <v-list-item-subtitle><b>Товар:</b>{{ order.productId }}</v-list-item-subtitle>
+              <v-list-item-subtitle><b>Количество:</b>{{ order.quantity }}</v-list-item-subtitle>
             </v-list-item-content>
-            <v-list-item-action>
+            
+            <v-list-item-action  >
               <v-btn 
-                :to="'/product/' + order.productId"
-                class="primary"
-              >Open</v-btn>
+              class="primary"
+              @click="orderDelete(order)"
+               
+              >&times;</v-btn>
             </v-list-item-action>
           </v-list-item>
         </v-list>
       </v-flex>
       <v-flex xs12 class="text-xs-center" v-else>
-        <h1 class="text--secondary">You have no orders</h1>
+        <h1 class="text--secondary">Заказов нет...</h1>
       </v-flex>
     </v-layout>
   </v-container>
@@ -51,12 +56,16 @@
 
 <script>
 export default {
+  data(){
+    return{
+    }
+  },
   computed: {
     loading () {
       return this.$store.getters.loading
     },
     orders () {
-      return this.$store.getters.orders
+      return this.$store.getters.orders    
     }
   },
   methods: {
@@ -66,14 +75,31 @@ export default {
         order.done = true
       })
       .catch(() => {})
-    }
-    // markDone (order) {
-    //   console.log(order)     
-    // }
-  },
-  created () {
-    this.$store.dispatch('fetchOrders')
+     },
+    orderDelete (order) {
+      //  if(orders.lenght)
+        this.$store.dispatch('orderDelete', order.id)
+       
+       .then(() => {
+        //  if delete success
+       this.$store.dispatch('fetchOrders')
+         
+      })
+      .catch(() => {})
+     }
     
-  }
+  },
+  created () {   
+    this.$store.dispatch('fetchOrders')    
+  },
+
+  
+  
 }
 </script>
+<style scoped>
+
+
+
+</style>
+

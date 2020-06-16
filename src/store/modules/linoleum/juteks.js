@@ -14,10 +14,6 @@ export default {
     SET_COL_JUT(state,payload){
     state.coljut=payload},
 
-    // SET_DESCRIPTIN(state,payload){
-    //   state.description=payload
-    // }
-
   },
  
   actions: {  
@@ -91,9 +87,7 @@ export default {
      
    getters:{
     getJuteks:(state)=>state.jut,
-    getColJut:(state)=>state.coljut,
-
-    
+    getColJut:(state)=>state.coljut,   
 
   }
 }
