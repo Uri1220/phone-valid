@@ -4,10 +4,44 @@
     <!-- <v-toolbar====v-app-bar -->
     <!-- <v-app-bar app flat dark src="../assets/images/carusel1.jpg"> -->
     <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-      <!-- SEMESH -->
+    
+<!-- 
+      <v-btn icon @click="exit">
+        <v-icon>mdi-arrow-left</v-icon>        
+      </v-btn> -->
+
+
+
+<!-- 
+     <v-list two-line>
+        <v-list-item @click="aa">
+        <v-list-item-icon>
+          <v-icon color="indigo">mdi-phone</v-icon>
+        </v-list-item-icon>
+
+        <v-list-item-content>
+          <v-list-item-title>(650) 555-1234</v-list-item-title>
+          <v-list-item-subtitle>Mobile</v-list-item-subtitle>
+        </v-list-item-content>
+         </v-list-item>
+      </v-list> -->
+
+<!-- 
       <router-link to="/" tag="span" class="pointer">
         <v-toolbar-title>Semesh-S</v-toolbar-title>
-      </router-link>
+      </router-link> -->
+
+
+      <!-- Tolbar ITEMS -->
+      <!-- <v-toolbar-items class="hidden-sm-and-down"> -->
+      <v-toolbar-items >
+        <v-btn text v-for="(link,i) in links" :key="i" :to="link.url">
+          <v-icon left>{{link.icon}}</v-icon>
+          {{link.title}}
+        </v-btn>
+      </v-toolbar-items>
+
+
       <v-spacer></v-spacer>
 
       <!-- dropdown menu -->
@@ -24,18 +58,15 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <!-- Tolbar ITEMS -->
-      <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text v-for="(link,i) in links" :key="i" :to="link.url">
-          <v-icon left>{{link.icon}}</v-icon>
-          {{link.title}}
-        </v-btn>
-      </v-toolbar-items>
+
       <!-- BUTTON -->
-      <v-app-bar-nav-icon style="margin-right:8px" color="white" @click="drawer=!drawer" 
-      class="hidden-md-and-up"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon style="margin-right:8px" color="white"
+        @click="drawer=!drawer" 
+        class="hidden-md-and-up">
+      </v-app-bar-nav-icon>
     </v-app-bar>
           <!-- 2 tollbar -->
+
           
 
     <!-- //////////////////////////////////////////////// -->
@@ -51,6 +82,9 @@
    
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
+
+
+          
           <!-- //////////////////// -->
           
           <v-list-group
@@ -97,6 +131,7 @@
 
 <script>
 export default {
+  name: "Navbar",
   // props:['goods'],
    props:{
      goods:{
@@ -110,17 +145,17 @@ export default {
       linItem:"",    
       //внутри   тоолбара
       links: [
-        // { title: "Login", icon: "mdi-star", url: "/login" },
+         { title: "+375(29)000-0000", icon: "mdi-phone", url: "/login" },
         // {
         //   title: "Register",
         //   icon: "mdi-face",
         //   url: "/register"
         // },
-        {
-          title: "Orders",
-          icon: "mdi-moped",
-          url: "/checkout"
-        },
+        // {
+        //   title: "Orders",
+        //   icon: "mdi-moped",
+        //   url: "/checkout"
+        // },
         // {
         //   title: "New Product",
         //   icon: "mdi-language-swift",
@@ -135,14 +170,19 @@ export default {
       
       //Меню дропдаун
       dropmenulinks: [
-        { icon: "dashboard", text: "Dashboard", route: "/" },
-        { icon: "folder", text: "Login", route: "/login" },
+        // { icon: "dashboard", text: "Dashboard", route: "/" },
+        // { icon: "folder", text: "Login", route: "/login" },
         {
-          icon: "person",
-          text: "Register",
-          route: "/register"
+          icon: "mdi-moped",
+          text: "orders",
+          route: "/checkout"
         }
       ]
+    }
+  },
+  methods:{
+    exit(){
+      this.$router.push('/')
     }
   }
  

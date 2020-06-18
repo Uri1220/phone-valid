@@ -3,12 +3,14 @@
     <v-layout column>
       <v-flex xs12 sm6 md4 class="text-xs-center pt-5" v-if="loading">
         <!-- loader: -->
+        <div class="text-center">
         <v-progress-circular
             :size="80"
             :width="4"
             color="blue"
             indeterminate
         ></v-progress-circular>
+        </div>
       </v-flex>
       <v-flex xs12 sm6 offset-sm3 v-else-if="!loading && orders.length !== 0">
         <h1 class="text-xs-center  mb-3 ">Заказы</h1>
@@ -56,6 +58,7 @@
 
 <script>
 export default {
+  name: "Checkout",
   data(){
     return{
     }

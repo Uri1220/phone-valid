@@ -1,12 +1,16 @@
 <template>
-  <v-app>
+<v-app>
+  <!-- <v-app> -->
     <Navbar 
     v-bind:goods="goods"
     />
+
+     <!-- <v-main-wrapper /> -->
+
     <template v-if="error">
       <v-snackbar
         :multi-line="true"
-        :timeout="50000"
+        :timeout="10000"
         color="error"
         @input="closeError"
         :value="true"
@@ -27,17 +31,20 @@
     </v-content> 
 
     <!-- <Footer /> -->
+  <!-- </v-app> -->
   </v-app>
 </template>
 
 <script>
-import Navbar from "../src/views/Navbar";
+ import Navbar from "../src/views/Navbar";
+ //import vMainWrapper from './components/v-main-wrapper'
 // import Footer from "../src/views/Footer";
 
 export default {
   name: "App",
   components: {
-    Navbar,
+     Navbar,
+    // vMainWrapper
     // Footer,
   },
   data: () => ({ 

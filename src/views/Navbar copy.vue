@@ -1,13 +1,21 @@
 <template>
 
-  <v-container>
+  <div>
     <!-- <v-toolbar====v-app-bar -->
     <!-- <v-app-bar app flat dark src="../assets/images/carusel1.jpg"> -->
     <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-      <!-- SEMESH -->
+    
+
+      <v-btn icon @click="exit">
+        <v-icon>mdi-arrow-left</v-icon>        
+      </v-btn>
+
+<!-- 
       <router-link to="/" tag="span" class="pointer">
         <v-toolbar-title>Semesh-S</v-toolbar-title>
-      </router-link>
+      </router-link> -->
+
+
       <v-spacer></v-spacer>
 
       <!-- dropdown menu -->
@@ -32,7 +40,7 @@
         </v-btn>
       </v-toolbar-items>
       <!-- BUTTON -->
-      <v-app-bar-nav-icon color="white" @click="drawer=!drawer" 
+      <v-app-bar-nav-icon style="margin-right:8px" color="white" @click="drawer=!drawer" 
       class="hidden-md-and-up"></v-app-bar-nav-icon>
     </v-app-bar>
           <!-- 2 tollbar -->
@@ -51,6 +59,9 @@
    
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item>
+
+
+          
           <!-- //////////////////// -->
           
           <v-list-group
@@ -92,7 +103,7 @@
       
     </v-navigation-drawer>
     
-  </v-container>
+  </div>
 </template>
 
 <script>
@@ -116,11 +127,11 @@ export default {
         //   icon: "mdi-face",
         //   url: "/register"
         // },
-        {
-          title: "Orders",
-          icon: "mdi-moped",
-          url: "/checkout"
-        },
+        // {
+        //   title: "Orders",
+        //   icon: "mdi-moped",
+        //   url: "/checkout"
+        // },
         // {
         //   title: "New Product",
         //   icon: "mdi-language-swift",
@@ -135,14 +146,19 @@ export default {
       
       //Меню дропдаун
       dropmenulinks: [
-        { icon: "dashboard", text: "Dashboard", route: "/" },
-        { icon: "folder", text: "Login", route: "/login" },
+        // { icon: "dashboard", text: "Dashboard", route: "/" },
+        // { icon: "folder", text: "Login", route: "/login" },
         {
-          icon: "person",
-          text: "Register",
-          route: "/register"
+          icon: "mdi-moped",
+          text: "orders",
+          route: "/checkout"
         }
       ]
+    }
+  },
+  methods:{
+    exit(){
+      this.$router.push('/')
     }
   }
  

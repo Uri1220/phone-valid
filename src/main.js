@@ -8,7 +8,7 @@ import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
 
-Vue.component('app-buy-dialog', BuyDialogComponent)
+Vue.component('app-buy-dial', BuyDialogComponent)
 Vue.config.productionTip = false
 
 const firebaseApp=firebase.initializeApp({apiKey: "AIzaSyDx2acOEd3EXtE3-ejjRmf4_n2QW1Dcxdg",

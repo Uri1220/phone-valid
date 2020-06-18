@@ -1,9 +1,9 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-      <v-btn color="primary" dark v-on="on">Отправить заявку</v-btn>
+      <v-btn color="blue-grey lighten-4"  v-on="on">Отправить заявку</v-btn>
     </template>
-    <v-card>
+    <v-card >
       <v-container>
         <v-layout row>
           <v-flex xs12>
@@ -16,9 +16,25 @@
         <v-layout row>
           <v-flex xs12>
             <v-card-text>
-              <v-text-field name="name" label="Ваше имя" type="text" v-model="name"></v-text-field>
-              <v-text-field name="phone" label="Ваш телефон" type="text" v-model="phone"></v-text-field>
-              <v-text-field name="quantity" label="Количество" type="text" v-model="quantity"></v-text-field>
+              <v-form ref="form" v-model="valid" lazy-validation>
+                 <v-text-field
+                  v-model="name"
+                  :rules="nameRules"
+                  label="Ваше имя"
+                    required
+                   ></v-text-field>
+                 <v-text-field
+                  v-model.number="phone"
+                  :rules="phoneRules"
+                  label="Телефон"
+                  required
+                  ></v-text-field>
+                  <v-text-field
+                  v-model="quantity"
+                  label="Количество"
+                  required
+                ></v-text-field>
+               </v-form>
             </v-card-text>
           </v-flex>
         </v-layout>
@@ -37,7 +53,7 @@
                 text
                 class="success"
                 @click="onSave"
-                :disabled="localLoading"
+                :disabled="localLoading && !valid "  
                 :loading="localLoading"
               >Заказать</v-btn>
             </v-card-actions>
@@ -50,14 +66,28 @@
 
 <script>
 export default {
+  name: "BuyDialog",
   props: ["product"],
   data() {
     return {
       dialog: false,
-      name: "",
-      phone: "",
+      // name: "",
+      // phone: "",
       quantity: "",
-      localLoading: false
+      localLoading: false,
+
+      valid: true,
+      name: '',
+      nameRules: [
+        v => !!v || 'Введите имя',
+        v => (v && v.length <= 16) || 'Имя не должно превышать 16 символов',
+      ],
+      phone: '',
+      phoneRules: [
+        v => !!v || 'Укажите телефон',
+        // v => (v && v.length <= 16) || 'Номер не должен превышать 16 символов',
+      ],
+
     };
   },
   methods: {
@@ -68,7 +98,7 @@ export default {
       this.dialog = false;
     },
     onSave() {
-      if (this.name !== "" && this.phone !== "") {
+      if (this.$refs.form.validate()) {
         this.localLoading = true;
         this.$store
           .dispatch("createOrder", {
@@ -77,7 +107,6 @@ export default {
             quantity: this.quantity,
             collection: this.product.cn,
             productId: this.product.id,
-            // ownerId: this.product.ownerId
           })
           .finally(() => {
             this.name = "";
@@ -88,7 +117,8 @@ export default {
             this.dialog = false;
           });
       }
-    }
+    },
+   
   }
 };
 </script>
