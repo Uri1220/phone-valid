@@ -1,6 +1,5 @@
 <template>
-  <div>
-      
+  <div>     
 
       <p style="text-align:center ">КОЛЛЕКЦИИ</p>
 

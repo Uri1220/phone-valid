@@ -13,7 +13,8 @@
               <v-img :src="prod.im" 
               height="250px"
                class="white--text align-end"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+
                >
                  <v-card-title>{{prod.id}}</v-card-title>
                </v-img>            

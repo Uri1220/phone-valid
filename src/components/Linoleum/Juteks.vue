@@ -37,7 +37,6 @@ import ListProducts from '../Linoleum/LinoleumParts/ListLinolProducts'
 import BottomNavigation from '../Linoleum/LinoleumParts/BottomNavigation'
 import Description from '../Linoleum/LinoleumParts/Description'
 import { mapGetters } from "vuex";
-
 export default {
   name: "Juteks",
   data: () => ({
@@ -70,10 +69,8 @@ export default {
   async mounted() {
     if (!this.jut.length) this.jut = await this.$store.dispatch("fetchJuteks");
   },
-
   computed: {
     ...mapGetters(["getJuteks", "getColJut"]),
-
     filteredProd() {
       let products = this.getJuteks;
       if (this.bottomNav)
@@ -97,7 +94,6 @@ export default {
       return prod;
     }
   },
-
   methods: {
     getBotNavigation(l){
       this.bottomNav=l
@@ -110,7 +106,6 @@ export default {
   margin: 0;
   padding: 0;
 }
-
 .bc {
   display: grid;
   grid-template-columns: 278px 1fr;
@@ -121,4 +116,3 @@ export default {
   font-size: 14px;
 }
 </style>
- 
