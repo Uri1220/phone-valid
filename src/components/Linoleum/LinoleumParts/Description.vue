@@ -11,7 +11,7 @@
           <div class="des">
             <div class="str" v-for="des of descriptionImg" :key="des.id">
               <p>{{des.str}}</p>
-              <hr />
+              <hr color="#90CAF9"/>
             </div>
 
             <div class="d1">
@@ -31,7 +31,7 @@
         </v-flex>
         <v-flex></v-flex>
       </v-layout>
-      <hr />
+      <hr color="#90CAF9"/>
     </v-container>
 </template>
 

@@ -1,1 +1,1 @@
-before popur
+dinamic width

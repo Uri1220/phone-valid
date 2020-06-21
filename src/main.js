@@ -7,6 +7,7 @@ import BuyDialogComponent from '@/components/BuyDialog'
 import firebase from 'firebase/app'
 import 'firebase/firestore'
 import 'firebase/auth'
+import 'material-design-icons-iconfont'
 
 Vue.component('app-buy-dial', BuyDialogComponent)
 Vue.config.productionTip = false

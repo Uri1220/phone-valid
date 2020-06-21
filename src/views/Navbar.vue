@@ -3,7 +3,9 @@
   <div>
     <!-- <v-toolbar====v-app-bar -->
     <!-- <v-app-bar app flat dark src="../assets/images/carusel1.jpg"> -->
-    <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
+    <v-app-bar app flat dark 
+    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+    >
     
 <!-- 
       <v-btn icon @click="exit">
@@ -12,19 +14,6 @@
 
 
 
-<!-- 
-     <v-list two-line>
-        <v-list-item @click="aa">
-        <v-list-item-icon>
-          <v-icon color="indigo">mdi-phone</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-content>
-          <v-list-item-title>(650) 555-1234</v-list-item-title>
-          <v-list-item-subtitle>Mobile</v-list-item-subtitle>
-        </v-list-item-content>
-         </v-list-item>
-      </v-list> -->
 
 <!-- 
       <router-link to="/" tag="span" class="pointer">

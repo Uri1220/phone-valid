@@ -1,64 +1,110 @@
 <template>
-  <div>
-    <p style="text-align:center;margin-top: 10px; ">ДИЗАЙНЫ</p>
+  <div>  
+          <popup v-if="isInfoPopupVisible"         
+            :popupTitle="product_data.id"
+            @closePopup="closeInfoPopup"            
+            >                     
 
-    <v-container grid-list-md>
-      <v-layout row wrap>
-        <v-flex xs12 sm6 md4 lg3 v-for="prod of products_data" :key="prod.id">
-          <v-hover v-slot:default="{ hover }">
+            <img :src="product_data.im"
+            :width="popWidth"                   
+             >                      
+          </popup>
+
+          <v-hover v-slot:default="{ hover }">              
             <v-card max-width="344"
-             :elevation="hover ? 12 : 2" 
-             :class="{ 'on-hover': hover }"
-             >
-              <v-img :src="prod.im" 
-              height="250px"
-               class="white--text align-end"
-               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
+            :elevation="hover ? 12 : 2" 
+             :class="{ 'on-hover': hover } "
+             class="border"
 
+            
+             >
+
+              <v-img :src="product_data.im" 
+              @click="showPopupInfo"
+              height="250px"
+               class="white--text align-end pointer"
+               gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.2)"
                >
-                 <v-card-title>{{prod.id}}</v-card-title>
-               </v-img>            
+                 <v-card-title>{{product_data.id}}</v-card-title>
+               </v-img> 
 
               <v-card-subtitle 
-              class="headline"
+                  class="headline mt-n3 mb-n5"
               >
-              Цена: {{prod.pr}} руб/м2
+              Цена: {{product_data.pr}} руб/м2
               </v-card-subtitle>
 
+              <v-card-actions>
               <div class="ml-1 mb-1">
                 <app-buy-dial 
-                :product="prod"              
+                :product="product_data"              
                 >
-                </app-buy-dial>
+                </app-buy-dial>               
               </div>
 
-             
+               <v-btn outlined color="blue lighten-1"
+                  @click="showPopupInfo"
+                  class="ml-2 mb-1 pt-1"
+                  >
+                  <v-icon size="32"
+                    class="material-icons"
+                    >zoom_in
+                  </v-icon>                
+               </v-btn>        
+
+               </v-card-actions>             
             </v-card>
           </v-hover>
-        </v-flex>
-      </v-layout>
-    </v-container>
+      
   </div>
 </template>
 
 <script>
+import Popup from './Popup'
+
  
 export default {
   name: "ListProducts",
-  // props: ["products_data"],
-  props:{products_data:{
-    type:Array,
-    default(){
-      return[]
-    }
+  props:{ 
+   product_data: {
+        type: Object,
+        default() {
+          return {}
+        }
+      } 
+  },
+  components:{
+    Popup
+  },
 
+  data: () => ({ 
+    isInfoPopupVisible:false
+  }),
 
-  } }, 
-  data: () => ({}),
-
-  computed: {},
-
-  methods: {}
+ computed: {
+   /*eslint-disable*/ 
+      popWidth () {
+        switch (this.$vuetify.breakpoint.name) {
+          case 'xs': return '220px'
+          case 'sm': return '350px'
+          case 'md': return '600px'
+          case 'lg': return '600px'
+          case 'xl': return '800px'
+        }
+      },
+   },
+  methods: {
+    imgclick(i){
+      console.log(i)
+    },
+     showPopupInfo() {
+        this.isInfoPopupVisible = true;
+      },
+       closeInfoPopup() {
+        this.isInfoPopupVisible = false;
+      },
+  },
+   
 };
 </script>
 <style scoped>
@@ -69,5 +115,12 @@ export default {
 .v-card:not(.on-hover) {
   opacity: 0.8;
 }
+.pointer{
+  cursor:pointer
+}
+.border{
+  
+}
+
 </style>
  

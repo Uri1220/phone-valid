@@ -27,8 +27,19 @@
       />   
    
     <!-- //////////////////////////////////////////////////// -->
-       
-        <list-products :products_data="filteredProd"/>
+       <p style="text-align:center;margin-top: 10px; ">ДИЗАЙНЫ</p>
+        <v-container grid-list-md>
+          <v-layout row wrap>
+            <v-flex xs12 sm6 md4 lg3
+              v-for="product in filteredProd"
+              :key="product.id"
+            >
+              <list-products                            
+                :product_data="product"
+              />
+            </v-flex>
+        </v-layout>
+      </v-container>
   </div>
 </template>
 

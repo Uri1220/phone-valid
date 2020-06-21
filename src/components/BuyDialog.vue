@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-      <v-btn color="blue-grey lighten-4"  v-on="on">Отправить заявку</v-btn>
+      <v-btn outlined color="blue lighten-1"  v-on="on">Отправить заявку</v-btn>
     </template>
     <v-card >
       <v-container>

@@ -7,12 +7,17 @@
         v-model="bottomNav"
         :value="activeBtn"
         color="blue"
-        background-color="rgba(0, 0, 0, 0.1)"
+        background-color="#FAFAFA"
+        
+        
+        
+        
       >
         <v-btn  v-for="(link,i) in list_collection" 
         :key="i" 
         :value="link"
         @click="bot(link)"
+        class="mx-n1"
         >
           <span>{{link}}</span>
         </v-btn>
