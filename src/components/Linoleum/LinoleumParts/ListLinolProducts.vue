@@ -1,3 +1,4 @@
+
 <template>
   <div>  
           <popup v-if="isInfoPopupVisible"         
@@ -61,7 +62,6 @@
 
 <script>
 import Popup from './Popup'
-
  
 export default {
   name: "ListProducts",
@@ -76,11 +76,9 @@ export default {
   components:{
     Popup
   },
-
   data: () => ({ 
     isInfoPopupVisible:false
   }),
-
  computed: {
    /*eslint-disable*/ 
       popWidth () {
@@ -111,7 +109,6 @@ export default {
 .v-card {
   transition: opacity 0.4s ease-in-out;
 }
-
 .v-card:not(.on-hover) {
   opacity: 0.8;
 }
@@ -121,6 +118,4 @@ export default {
 .border{
   
 }
-
 </style>
- 

@@ -9,6 +9,7 @@ import Sinteros from '../components/Linoleum/Sinteros.vue'
 import Juteks from '../components/Linoleum/Juteks.vue'
 import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
 import Checkout from '../components/Checkout'
+import Delivery from '../views/Delivery'
 
 
 Vue.use(VueRouter)
@@ -54,6 +55,11 @@ Vue.use(VueRouter)
       path: '/linoleum/ivc/',
       name: 'TopLinoleum',
       component:TopLinoleum
+    },
+    {
+      path: '/delivery',
+      name: 'Delivery',
+      component:Delivery
     }
    
   

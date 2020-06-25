@@ -8,7 +8,7 @@
         <v-layout row>
           <v-flex xs12>
             <v-card-title>
-              <h3 class="text--primary">Заказать выбранную позицию?</h3>
+              <h5 class="text--primary ">Заказать выбранную позицию?</h5>
             </v-card-title>
           </v-flex>
         </v-layout>
@@ -18,18 +18,22 @@
             <v-card-text>
               <v-form ref="form" v-model="valid" lazy-validation>
                  <v-text-field
+                  counter
                   v-model="name"
                   :rules="nameRules"
                   label="Ваше имя"
                     required
                    ></v-text-field>
                  <v-text-field
+                  counter
                   v-model.number="phone"
                   :rules="phoneRules"
                   label="Телефон"
                   required
                   ></v-text-field>
                   <v-text-field
+                   counter
+                  :rules="countrule"
                   v-model="quantity"
                   label="Количество"
                   required
@@ -75,7 +79,6 @@ export default {
       // phone: "",
       quantity: "",
       localLoading: false,
-
       valid: true,
       name: '',
       nameRules: [
@@ -85,9 +88,9 @@ export default {
       phone: '',
       phoneRules: [
         v => !!v || 'Укажите телефон',
-        // v => (v && v.length <= 16) || 'Номер не должен превышать 16 символов',
+         v => (v && v.length <= 16) || 'Номер не должен превышать 16 символов',
       ],
-
+       countrule: [v => v.length <= 60 || 'Максимум 60 символов'],
     };
   },
   methods: {
@@ -122,3 +125,6 @@ export default {
   }
 };
 </script>
+
+
+
