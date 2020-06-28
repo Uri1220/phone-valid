@@ -1,1 +1,1 @@
-start delivery, contact works
+Доставка работает

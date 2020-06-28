@@ -1,12 +1,12 @@
 <template>
   <div>  
-          <popup v-if="isInfoPopupVisible"         
-            @closePopup="closeInfoPopup"            
-            >                     
+
+          <popup v-if="deliveryVisible"
+          @closePopup="closeInfoPopup" >                     
                 <h2>Delivery</h2>
-            <!-- <img :src="product_data.im"
-            :width="popWidth"                   
-             >                       -->
+                 {{deliveryVisible}}
+               
+           
           </popup>
 
          
@@ -15,28 +15,31 @@
 </template>
 
 <script>
-import Popup from '../components/Linoleum/LinoleumParts/Popup'
+import { mapGetters,mapActions } from "vuex";
+
+ import Popup from '../components/Linoleum/LinoleumParts/Popup'
 
  
 export default {
   name: "Delivery",
-  props:{ 
-   product_data: {
-        type: Object,
-        default() {
-          return {}
-        }
-      } 
-  },
+
   components:{
-    Popup
+     Popup
   },
 
-  data: () => ({ 
-    isInfoPopupVisible:true
-  }),
+  data: () => ({
+      }),
 
- computed: {
+ computed:{ 
+         deliveryVisible(){
+             return this.delivery
+         },
+    ... mapGetters([
+      'delivery',
+    ]),
+  
+         
+     
    /*eslint-disable*/ 
       popWidth () {
         switch (this.$vuetify.breakpoint.name) {
@@ -47,17 +50,33 @@ export default {
           case 'xl': return '800px'
         }
       },
+
    },
   methods: {
-    imgclick(i){
-      console.log(i)
-    },
-     showPopupInfo() {
-        this.isInfoPopupVisible = true;
-      },
+    ...mapActions([
+      'getDeliveryFalse',
+      'getDeliveryTrue'
+
+    ]),  
+   
        closeInfoPopup() {
-        this.isInfoPopupVisible = false;
+        this.getDeliveryFalse
+        deliveryVisible()
+      //  console.log(this.deliveryVisible)
+
       },
+  },
+   async mounted() {
+     this.getDeliveryTrue
+        console.log('from Delivery' + this.delivery)
+     
+      // await this.$store.dispatch("getDelivery");
+         
+
+    //  async mounted() {
+    // if (!this.sint.length) this.sint = await this.$store.dispatch("fetchSinteros");
+  //},
+    
   },
    
 };
@@ -73,9 +92,7 @@ export default {
 .pointer{
   cursor:pointer
 }
-.border{
-  
-}
+
 
 </style>
  

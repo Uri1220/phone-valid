@@ -4,6 +4,7 @@ export default {
       error: null
     },
     mutations: {
+     
       setLoading (state, payload) {
         state.loading = payload
       },
@@ -15,6 +16,7 @@ export default {
       }
     },
     actions: {
+      
       setLoading ({commit}, payload) {
         commit('setLoading', payload)
       },
@@ -31,7 +33,11 @@ export default {
       },
       error (state) {
         return state.error
+      },
+      DELIVERY_VISIBLE(state){
+        return state.deliveryVisible
       }
+      
     }
   }
   

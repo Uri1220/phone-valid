@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div >
     <!-- BREADCRUMBS -->    
-      <div class="bc">
+      <div class="bc ">
         <div>
           <v-breadcrumbs :items="bread_items"></v-breadcrumbs>
         </div>
@@ -28,13 +28,13 @@
    
     <!-- //////////////////////////////////////////////////// -->
        <p style="text-align:center;margin-top: 10px; ">ДИЗАЙНЫ</p>
-        <v-container grid-list-md>
+        <v-container grid-list-md >
           <v-layout row wrap>
             <v-flex xs12 sm6 md4 lg3
               v-for="product in filteredProd"
               :key="product.id"
             >
-              <list-products                            
+              <list-products  class="ml-5"                          
                 :product_data="product"
               />
             </v-flex>

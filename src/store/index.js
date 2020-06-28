@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import sinteros from './modules/linoleum/sinteros'
 import juteks from './modules/linoleum/juteks'
 import common from './modules/common'
+import navbar from './modules/navbar'
 import order from './order'
  
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
     sinteros,
     juteks,
     order,
-    common
+    common,
+    navbar
   }
 })

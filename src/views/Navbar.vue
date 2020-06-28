@@ -21,7 +21,11 @@
       </v-toolbar-items>
 
       <v-toolbar-items class="hidden-sm-and-down">
-        <v-btn text :to="{name:'Delivery'}">Доставка</v-btn>
+        <v-btn text 
+        :to="{name:'Delivery'}"
+        @click="isDeliveryVisible"
+        >Доставка
+        </v-btn>
       </v-toolbar-items>
 
       <v-spacer></v-spacer>
@@ -221,6 +225,8 @@
 </template>
 
 <script>
+
+
 export default {
   name: "Navbar",
   props: {
@@ -274,11 +280,17 @@ export default {
     };
   },
   methods: {
-    exit() {
-      this.$router.push("/");
-    },
+    
+    // exit() {
+    //   this.$router.push("/");
+    // },
     closeContact(){
       this.menu =false     
+    },
+    isDeliveryVisible(){
+       this.$store.dispatch("getDeliveryTrue")
+      // console.log('from navbar')
+
     }
   }
 };

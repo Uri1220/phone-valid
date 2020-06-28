@@ -1,8 +1,6 @@
 <template>
   <div class="popup_wrapper" ref="popup_wrapper">
-    <div class='v-popup '
-   
-    >
+    <div class='v-popup ' >
    
       <div class="v-popup__header">
         <span  class="headline ">{{popupTitle}}</span>
@@ -38,6 +36,7 @@
       
       closePopup() {
         this.$emit('closePopup')
+          this.$store.dispatch('getDeliveryFalse')
       }
     },
      

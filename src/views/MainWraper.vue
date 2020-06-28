@@ -1,52 +1,35 @@
 <template>
-<v-app>
-  <!-- <v-app> -->
-    <Navbar 
-    v-bind:goods="goods"
-    />
+<!-- <v-app> -->
+  <div class="v-main-wrapper">
+    <Navbar  v-bind:goods="goods"/>
 
-     <!-- <v-main-wrapper /> -->
 
-    <template v-if="error">
-      <v-snackbar
-        :multi-line="true"
-        :timeout="10000"
-        color="error"
-        @input="closeError"
-        :value="true"
-      >
-        {{ error }}
-        <v-btn
-          dark
-          text
-          @click.native="closeError"
-        >
-          Close
-        </v-btn>
-      </v-snackbar>
-    </template>
- 
-    <v-content class="mx-2">    
+   
+
+
+    <keep-alive>
+     
+    <v-content class="">    
       <router-view></router-view>
     </v-content> 
+    </keep-alive>
 
-    <!-- <Footer /> -->
+    
+  </div>
   <!-- </v-app> -->
-  </v-app>
 </template>
 
 <script>
- import Navbar from "../src/views/Navbar";
- //import vMainWrapper from './components/v-main-wrapper'
-// import Footer from "../src/views/Footer";
-export default {
-  name: "App",
-  components: {
-     Navbar,
-    // vMainWrapper
-    // Footer,
-  },
-  data: () => ({ 
+   import Navbar from "./Navbar";
+
+
+  export default {
+    name: 'MainWraper',
+    components: {
+      Navbar
+    },
+    props: {},
+     data: () => ({ 
    
     goods: [
         {
@@ -75,15 +58,14 @@ export default {
         }
     ],
   }),
-    methods: {
-    closeError () {
-      this.$store.dispatch('clearError')
-    }
-  },
-  computed: {
-    error () {
-      return this.$store.getters.error
-    }
+    computed: {},
+    methods: {},
+    watch: {}
   }
-};
 </script>
+
+<style>
+  .v-main-wrapper {
+    margin-left: 10px;
+  }
+</style>

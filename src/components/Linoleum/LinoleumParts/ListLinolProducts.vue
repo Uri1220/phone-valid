@@ -115,7 +115,5 @@ export default {
 .pointer{
   cursor:pointer
 }
-.border{
-  
-}
+
 </style>
