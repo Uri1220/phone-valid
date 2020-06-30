@@ -30,10 +30,13 @@
                </v-img> 
 
               <v-card-subtitle 
-                  class="headline mt-n3 mb-n5"
+                  class=" mt-n3 mb-n5"
               >
-              Цена: {{product_data.pr}} руб/м2
+             <v-sheet tag="span" class="pr">Цена: {{product_data.pr}} руб/м2</v-sheet> 
+             <v-sheet tag="span" class="op ml-3" > {{product_data.op}}</v-sheet>    
               </v-card-subtitle>
+
+              
 
               <v-card-actions>
               <div class="ml-1 mb-1">
@@ -114,6 +117,12 @@ export default {
 }
 .pointer{
   cursor:pointer
+}
+.op{
+  text-decoration:line-through;
+}
+.pr{
+  font-size: 18px;
 }
 
 </style>

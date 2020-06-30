@@ -6,6 +6,7 @@ import juteks from './modules/linoleum/juteks'
 import common from './modules/common'
 import navbar from './modules/navbar'
 import order from './order'
+import sale from './sale'
  
 
 Vue.use(Vuex)
@@ -17,6 +18,7 @@ export default new Vuex.Store({
     juteks,
     order,
     common,
-    navbar
+    navbar,
+    sale
   }
 })

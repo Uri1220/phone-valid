@@ -10,6 +10,7 @@ import Juteks from '../components/Linoleum/Juteks.vue'
 import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
 import Checkout from '../components/Checkout'
 import Delivery from '../views/Delivery'
+import Sale from '../views/Sale'
 
 
 Vue.use(VueRouter)
@@ -60,6 +61,11 @@ Vue.use(VueRouter)
       path: '/delivery',
       name: 'Delivery',
       component:Delivery
+    },
+    {
+      path: '/sale',
+      name: 'Sale',
+      component:Sale
     }
    
   

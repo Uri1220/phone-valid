@@ -2,85 +2,60 @@
   <div>
     <!-- <v-app-bar app flat dark src="../assets/images/carusel1.jpg"> -->
     <v-app-bar app flat dark src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg">
-     
+      <!-- 
+      <v-btn icon @click="exit">
+        <v-icon>mdi-arrow-left</v-icon>        
+      </v-btn>-->
 
-         <!-- BUTTON -->
-      <v-app-bar-nav-icon
-        color="white"
-        @click="drawer=!drawer"
-        class="hidden-md-and-up"
-      ></v-app-bar-nav-icon>
- 
+      <!-- 
+      <router-link to="/" tag="span" class="pointer">
+        <v-toolbar-title>Semesh-S</v-toolbar-title>
+      </router-link>-->
+
+      <!-- Tolbar ITEMS -->
+      <!-- <v-toolbar-items class="hidden-sm-and-down"> -->
       <v-toolbar-items>
         <v-btn text>
           <v-icon left>mdi-phone</v-icon>+375(29)000-0000
         </v-btn>
       </v-toolbar-items>
 
-         <v-btn-toggle
-          class="hidden-md-and-down"
-        v-model="toggle_exclusive"        
-        group     
-        
-      >
-        <v-btn :value="1" text
-         :to="{name:'Sale'}"
-         >
-          <v-icon left size="22">mdi-star</v-icon>
-          распродажа
-        </v-btn>
-
-        <v-btn :value="2" text
-         :to="{name:'Delivery'}"
+       <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn text tile class="mx-2"
+        :to="{name:'Delivery'}"
         @click="isDeliveryVisible"
-        >
-         <v-icon left size="26" >mdi-truck-outline</v-icon>
-          доставка
+        >Распродажа
         </v-btn>
+      </v-toolbar-items>
 
-        <v-btn :value="3" text>        
-          <v-icon left size="26" class="material-icons">attach_money</v-icon>
-            оплата
-        </v-btn>      
-      </v-btn-toggle>       
+      <v-toolbar-items class="hidden-sm-and-down">
+        <v-btn text 
+        :to="{name:'Delivery'}"
+        @click="isDeliveryVisible"
+        >Доставка
+        </v-btn>
+      </v-toolbar-items>
+     
 
       <v-spacer></v-spacer>
 
-      <!-- dropdown menu1 -->
-      <v-menu offset-y >
-        <template  v-slot:activator="{ on }">
-          <v-btn text v-on="on" color="white" class="hidden-md-and-up">
-            <!-- <v-icon left>mdi-dots-vertical</v-icon> -->
-             <span>Menu</span>
+      <!-- dropdown menu -->
+      <v-menu offset-y>
+        <template v-slot:activator="{ on }">
+          <v-btn text v-on="on" color="white">
+            <v-icon left>mdi-expand_more</v-icon>
+            <span>Menu</span>
           </v-btn>
         </template>
         <v-list>
-          <v-list-item 
-           router :to="{name:'Sale'}"       
-           >
-            <v-list-item-title>Распродажа</v-list-item-title>
-          </v-list-item>          
-       
          
           <v-list-item 
            @click="isDeliveryVisible"
            router :to="{name:'Delivery'}"       
            >
             <v-list-item-title>Доставка</v-list-item-title>
-          </v-list-item>          
-        </v-list>
-      </v-menu>
+          </v-list-item>
 
-     
-
-      <!-- dropdown menu2 -->
-      <v-menu offset-y >
-        <template  v-slot:activator="{ on }">
-          <v-btn text v-on="on" color="white" >
-            <v-icon left>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
           <v-list-item 
            router :to="{name:'checkout'}"       
            >
@@ -88,9 +63,16 @@
           </v-list-item>
         </v-list>
       </v-menu>
-    </v-app-bar>
 
-    
+      <!-- BUTTON -->
+      <v-app-bar-nav-icon
+        style="margin-right:8px"
+        color="white"
+        @click="drawer=!drawer"
+        class="hidden-md-and-up"
+      ></v-app-bar-nav-icon>
+    </v-app-bar>
+    <!-- 2 tollbar -->
 
     <!-- //////////////////////////////////////////////////////////////////////// -->
 
@@ -286,8 +268,6 @@ export default{
 
       drawer: true,
       linItem: "",
-
-       toggle_exclusive: 1,
       
       
 

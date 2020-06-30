@@ -4,46 +4,47 @@ import 'firebase/database';
 
 export default {
   state:{
-    jut:[], 
-    coljut:[],
+    sale:[],
+    colsale:[] 
   },
   mutations:{
-    SET_JUT(state,payload){
-      state.jut=payload
+    SET_SALE(state,payload){
+      state.sale=payload
     },
-    SET_COL_JUT(state,payload){
-    state.coljut=payload},
-
+    SET_COL_SALE(state,payload){
+      state.colsale=payload
+    },   
   },
  
   actions: {  
      // READ BASE DATA  
-    async fetchJuteks({commit}) {
+    async fetchSale({commit}) {
       try {        
-        Vue.$db.collection('Juteks').get().then((querySnapshot) => {
-          let linitems=[]
+        Vue.$db.collection('Sale').get().then((querySnapshot) => {
+          let saleitems=[]
            let uniq=[]
         
           querySnapshot.forEach((doc) => {           
-            //  console.log(`${doc.id} => ${doc.data()}`);
             const data= doc.data()
-            let linitem={
+            let item={
              id:doc.id,
               cn:data.cn,
               im:data.im,
               pr:data.pr,
-              descr:data.descr,
-              str:data.str,
-              op:data.op
+              ed:data.ed,
+              tx:data.tx,
+              op:data.op,
+              st:data.st,
+              des:data.des
 
             } 
             let uniqitem={
               cn:data.cn,
             }           
-            linitems.push(linitem)
+            saleitems.push(item)
              uniq.push(uniqitem)              
           });
-          commit('SET_JUT',linitems)
+          commit('SET_SALE',saleitems)
 
           // console.log(uniq)
          // uniq.forEach(i=>console.log(i))
@@ -58,7 +59,7 @@ export default {
           }}) 
           // массив с уникальными значениями
          let uni = [...new Set(arrnotnull)]
-         commit('SET_COL_JUT',uni)                 
+         commit('SET_COL_SALE',uni)                 
           
         });
 
@@ -66,29 +67,13 @@ export default {
         console.log (e)
         
       }
-   },
-
-  //  async fetchJutDes ({commit}) {
-  //   commit('setLoading', true)
-  //   commit('clearError')
-
-  //  try {
-  //    const jutDes  = (await firebase.database().ref(`/jutDescr`).once('value')).val()||{}
-  //      // console.log(jutDes)
-  //    return Object.keys(jutDes).map(key=>({...jutDes[key],id:key}))
-
-  //      // commit('setLoading', false)
-  //  } catch (error) {
-  //     commit('setError', error.message)
-  //    // commit('setLoading', false)
-  //  }
-  // },
+   }, 
 
  },
      
    getters:{
-    getJuteks:(state)=>state.jut,
-    getColJut:(state)=>state.coljut,   
+    getSale:(state)=>state.sale,
+    getColSale:(state)=>state.colsale,   
 
   }
 }
