@@ -68,7 +68,8 @@
 
   }
   .v-popup {
-    padding: 3px;
+     border:1px solid #2196F3;
+     padding: 1px; 
     position: fixed;
     top: 50px;
     // width: 600px;

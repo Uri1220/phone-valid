@@ -10,7 +10,7 @@
           /{{ bottomNav }}
         </div>
       </div>
-
+                 <p style="text-align:center ">КОЛЛЕКЦИИ</p>
       <!-- Bottom Navigations -->
        <bottom-navigation 
         :list_collection="getColSin"
@@ -34,7 +34,7 @@
               v-for="product in filteredProd"
               :key="product.id"
             >
-              <list-products  class="ml-5"                          
+              <list-products                           
                 :product_data="product"
               />
             </v-flex>

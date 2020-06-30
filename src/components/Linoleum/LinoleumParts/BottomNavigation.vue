@@ -1,7 +1,7 @@
 <template>
   <div>     
 
-      <p style="text-align:center ">КОЛЛЕКЦИИ</p>
+      <!-- <p style="text-align:center ">КОЛЛЕКЦИИ</p> -->
         <!-- background-color="#FAFAFA" -->
 
       <v-bottom-navigation

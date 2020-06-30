@@ -10,7 +10,7 @@
           /{{ bottomNav }}
         </div>
       </div>
-
+               <p style="text-align:center ">КОЛЛЕКЦИИ</p>
       <!-- Bottom Navigations -->
        <bottom-navigation 
         :list_collection="getColJut"

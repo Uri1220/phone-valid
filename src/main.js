@@ -36,7 +36,7 @@ firebase.auth().onAuthStateChanged(()=>{
       store,
       render: h => h(App),
       created(){
-        this.$store.dispatch('fetchCategories')
+        // this.$store.dispatch('fetchCategories')
       }
     }).$mount('#app')
   }

@@ -10,19 +10,19 @@
         @click="drawer=!drawer"
         class="hidden-md-and-up"
       ></v-app-bar-nav-icon>
- 
+          <!-- PHONE -->
       <v-toolbar-items>
         <v-btn text>
           <v-icon left>mdi-phone</v-icon>+375(29)000-0000
         </v-btn>
       </v-toolbar-items>
-
-         <v-btn-toggle
+          <!-- BUTTONS -->
+     <v-btn-toggle
           class="hidden-md-and-down"
         v-model="toggle_exclusive"        
         group     
         
-      >
+         >
         <v-btn :value="1" text
          :to="{name:'Sale'}"
          >
@@ -102,7 +102,6 @@
         <v-subheader class="ml-5 mt-n2" >ТЦ "Стрелецкий Капитал"</v-subheader>
         <v-divider></v-divider>
 
-        <!-- <v-list-item @click="gg"> -->
         <v-list-item>
           <v-list-item-avatar>
             <v-img src="https://cdn.vuetifyjs.com/images/lists/1.jpg"></v-img>
@@ -118,23 +117,21 @@
                         <!-- CONTACTS -->
 
       <v-btn block outlined class="mt-n2">
-        <div class=" text-center" >
-            
-          <v-menu  
-          
+        <div class=" text-center" >            
+          <v-menu           
            v-model="menu"
            :close-on-content-click="false"
            :nudge-width="200" 
             offset-y>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn color="blue darken-1"
-               class text v-bind="attrs" 
-               v-on="on"
-               
-               >
-               Контакты
-               </v-btn>
-            </template>
+              <template v-slot:activator="{ on, attrs }">
+                <v-btn color="blue darken-1"
+                class text v-bind="attrs" 
+                v-on="on"
+                
+                >
+                Контакты
+                </v-btn>
+              </template>
  
              <v-card max-width="360"
              class="mx-auto"
@@ -229,9 +226,7 @@
                   </v-list-item-content>
                 </v-list-item>
               </v-list>
-            </v-card>
-             
-          
+            </v-card>         
           </v-menu>
         </div>
       </v-btn>
@@ -255,10 +250,7 @@
             <v-list-item-content>
               <v-list-item-title v-model="linItem" v-text="subItem.title"></v-list-item-title>
             </v-list-item-content>
-            <!-- 
-               <v-list-item-action>
-                
-            </v-list-item-action>-->
+           
           </v-list-item>
         </v-list-group>
       </v-list>
@@ -267,9 +259,6 @@
 </template>
 
 <script>
-// import Contacts from './Contacts'
-
-
 export default{
 
   name: "Navbar",
@@ -287,30 +276,18 @@ export default{
       drawer: true,
       linItem: "",
 
-       toggle_exclusive: 1,
-      
-      
-
-      
+       toggle_exclusive: 1,      
     };
   },
-  methods: {
-    
-    // exit() {
-    //   this.$router.push("/");
-    // },
+  methods: {  
     closeContact(){
       this.menu =false     
     },
     isDeliveryVisible(){
        this.$store.dispatch("getDeliveryTrue")
-      // console.log('from navbar')
-
     }
   },
-  components:{
-    // Contacts
-  }
+ 
 };
 </script>
 
