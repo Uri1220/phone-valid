@@ -5,9 +5,11 @@ import Login from '../components/Auth/Login'
 import Home from '../views/Home.vue'
 import Register from '../components/Auth/Register.vue'
 import LinoleumMain from '../components/Linoleum/LinoleumMain.vue'
+import LaminatMain from '../components/Laminat/LaminatMain.vue'
 import Sinteros from '../components/Linoleum/Sinteros.vue'
 import Juteks from '../components/Linoleum/Juteks.vue'
 import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
+import Kronostar from '../components/Laminat/Kronostar.vue'
 import Checkout from '../components/Checkout'
 import Delivery from '../views/Delivery'
 import Sale from '../views/Sale'
@@ -43,6 +45,11 @@ Vue.use(VueRouter)
       component:LinoleumMain
     },
     {
+      path: '/laminat/',
+      name: 'LaminatMain',
+      component:LaminatMain
+    },
+    {
       path: '/linoleum/sinteros/',
       name: 'Sinteros',
       component:Sinteros
@@ -56,6 +63,11 @@ Vue.use(VueRouter)
       path: '/linoleum/ivc/',
       name: 'TopLinoleum',
       component:TopLinoleum
+    },
+    {
+      path: '/laminat/kronostar/',
+      name: 'Kronostar',
+      component:Kronostar
     },
     {
       path: '/delivery',

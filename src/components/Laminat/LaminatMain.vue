@@ -1,6 +1,6 @@
 <template>
   <div class="center mt-12">
-   <h2>Linoleum Page</h2>
+  <h2>Laminat Page</h2> 
   </div>
 </template>
 
@@ -38,7 +38,7 @@ export default {
   }
   .center{
     text-align: center;
-    
+  
 
   }
 </style>

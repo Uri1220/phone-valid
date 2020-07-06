@@ -52,25 +52,26 @@ export default {
         {
           title: "Линолеум",
           url_title: "/linoleum/",
-          active:true,
+          // active:true,
+          active:false,
           items: [
             { title: "Синтерос(РФ)", url: "/linoleum/sinteros/" },
             { title: "Juteks (РФ)", url: "/linoleum/juteks/" },
-            { title: 'IVC "ИВК-Восток"(РФ)', url: "/linoleum/ivc/" },
-            { title: "Комитекст Лин(РФ)", url: "/linoleum/komitex/" },
-            { title: "Polystyl(РФ)", url: "/linoleum/polystyl/" }
+            // { title: 'IVC "ИВК-Восток"(РФ)', url: "/linoleum/ivc/" },
+            // { title: "Комитекст Лин(РФ)", url: "/linoleum/komitex/" },
+            // { title: "Polystyl(РФ)", url: "/linoleum/polystyl/" }
           ]
         },
         {
           title: "Ламинат",
-           url_title: "/catalog/laminat/",
+           url_title: "/laminat/",
           // active: true,
           items: [
-            { title: "Kronostar(РФ)", url: "/catalog/laminat/kronostar/" },
-            { title: "Tarkett(РФ)", url: "/catalog/laminat/tarkett/" },
-            { title: "Classen(Германия)", url: "/catalog/laminat/classen/" },
-            { title: "Kronopol()", url: "/catalog/laminat/kronopol/" },
-            { title: "VIVAFLOOR(РБ)", url: "/catalog/laminat/vivaflor/" }
+            { title: "Kronostar(РФ)", url: "/laminat/kronostar/" },
+            // { title: "Tarkett(РФ)", url: "/laminat/tarkett/" },
+            // { title: "Classen(Германия)", url: "/laminat/classen/" },
+            // { title: "Kronopol()", url: "/laminat/kronopol/" },
+            // { title: "VIVAFLOOR(РБ)", url: "/laminat/vivaflor/" }
           ]
         }
     ],

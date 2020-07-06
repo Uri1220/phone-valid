@@ -33,7 +33,7 @@
                   class=" mt-n3 mb-n5"
               >
              <v-sheet tag="span" class="pr">Цена: {{product_data.pr}} руб/м2</v-sheet> 
-             <v-sheet tag="span" class="op ml-3" > {{product_data.op}}</v-sheet>    
+             <v-sheet tag="span" class="op ml-3" > {{product_data.op}}  </v-sheet>    
               </v-card-subtitle>
 
               
