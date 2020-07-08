@@ -5,7 +5,7 @@
         <div>
           <v-breadcrumbs :items="bread_items"></v-breadcrumbs>
         </div>
-        <div class="cc">
+        <div class="cc ml-n2">
           <!-- <v-icon small>mdi-chevron-right</v-icon> -->
           /{{ bottomNav }}
         </div>
@@ -62,12 +62,12 @@ export default {
       },
       {
         text: "Линолеум",
-        disabled: false,
+        disabled: true,
         href: "/linoleum/"
       },
       {
         text: "Синтерос",
-        disabled: false,
+        disabled: true,
         href: "/linoleum/sinteros/"
       }
     ]

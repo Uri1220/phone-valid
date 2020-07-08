@@ -3,7 +3,7 @@
     <div class='v-popup ' >
    
       <div class="v-popup__header">
-        <span  class="headline ">{{popupTitle}}</span>
+        <span  class="headline ml-3">{{popupTitle}}</span>
        
          <v-icon size="40"
            class="material-icons"
@@ -37,6 +37,7 @@
       closePopup() {
         this.$emit('closePopup')
           this.$store.dispatch('getDeliveryFalse')
+          this.$store.dispatch('getPaymentFalse')
       }
     },
      

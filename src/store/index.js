@@ -8,6 +8,7 @@ import navbar from './modules/navbar'
 import order from './order'
 import sale from './sale'
 import kronostar from './modules/laminat/kronostar'
+import egger from './modules/laminat/egger'
  
 
 Vue.use(Vuex)
@@ -21,6 +22,7 @@ export default new Vuex.Store({
     common,
     navbar,
     sale,
-    kronostar
+    kronostar,
+    egger
   }
 })

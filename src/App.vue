@@ -51,7 +51,7 @@ export default {
     goods: [
         {
           title: "Линолеум",
-          url_title: "/linoleum/",
+          // url_title: "/linoleum/",
           // active:true,
           active:false,
           items: [
@@ -64,11 +64,11 @@ export default {
         },
         {
           title: "Ламинат",
-           url_title: "/laminat/",
+          //  url_title: "/laminat/",
           // active: true,
           items: [
             { title: "Kronostar(РФ)", url: "/laminat/kronostar/" },
-            // { title: "Tarkett(РФ)", url: "/laminat/tarkett/" },
+             { title: "Egger(РФ)", url: "/laminat/egger/" },
             // { title: "Classen(Германия)", url: "/laminat/classen/" },
             // { title: "Kronopol()", url: "/laminat/kronopol/" },
             // { title: "VIVAFLOOR(РБ)", url: "/laminat/vivaflor/" }

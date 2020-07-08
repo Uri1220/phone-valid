@@ -1,22 +1,22 @@
 <template>
   <div>
-    <popup v-if="deliveryVisible">     
+    <popup v-if="paymentVisible">     
       <v-card class="mx-auto" :width="popWidth">
-        <v-img
+        <!-- <v-img
           class="white--text align-end"
           height="300px"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSjhOoE7SeCk-obH0-5XSFQsUFWaTfqJgwsOA&usqp=CAU"
         >
           <v-card-title>Доставка Полоцк Новополоцк</v-card-title>
-        </v-img>
+        </v-img> -->
 
-        <v-card-subtitle class="pb-0">Объем кузова...</v-card-subtitle>
+        <v-card-subtitle class="pb-0">Оплата производится...</v-card-subtitle>
 
-        <v-card-text class="text--primary">
+        <!-- <v-card-text class="text--primary">
           <div>Грузоподъемность...</div>
 
           <div>При заказе свыше 250 руб. доставка осуществляется бесплатно.</div>
-        </v-card-text>
+        </v-card-text> -->
       </v-card>
     </popup>
   </div>
@@ -28,7 +28,7 @@ import { mapGetters, mapActions } from "vuex";
 import Popup from "../components/Linoleum/LinoleumParts/Popup";
 
 export default {
-  name: "Delivery",
+  name: "Payment",
 
   components: {
     Popup
@@ -37,10 +37,10 @@ export default {
   data: () => ({}),
 
   computed: {
-    deliveryVisible() {
-      return this.delivery;
+    paymentVisible() {
+      return this.payment;
     },
-    ...mapGetters(["delivery"]),
+    ...mapGetters(["payment"]),
 
     /*eslint-disable*/
     popWidth() {
@@ -59,11 +59,11 @@ export default {
     }
   },
   methods: {
-    ...mapActions(["getDeliveryFalse", "getDeliveryTrue"])
+    ...mapActions(["getPaymentFalse", "getPaymentTrue"])
   },
   async mounted() {
-    this.getDeliveryTrue;
-    // console.log("from Delivery" + this.delivery);    
+    this.getPaymentTrue;
+    console.log("from Payment" + this.payment);    
   }
 };
 </script>

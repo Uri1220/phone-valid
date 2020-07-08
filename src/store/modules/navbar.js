@@ -1,6 +1,7 @@
 export default {
     state: {
        deliveryVisible:false,
+       paymentVisible:false,
       
     },
     mutations: {
@@ -9,6 +10,12 @@ export default {
       },
       setDeliveryTrue (state) {
         state.deliveryVisible = true
+      },
+      setPaymentFalse (state) {
+        state.paymentVisible = false
+      },
+      setPaymentTrue (state) {
+        state.paymentVisible = true
       },
      
     },
@@ -19,12 +26,21 @@ export default {
       getDeliveryTrue({commit},) {
         commit('setDeliveryTrue')
       },
+      getPaymentFalse({commit},) {
+        commit('setPaymentFalse')
+      },
+      getPaymentTrue({commit},) {
+        commit('setPaymentTrue')
+      },
      
     },
     getters: {
       
       delivery(state){
         return state.deliveryVisible
+      },
+      payment(state){
+        return state.paymentVisible
       }
       
     }

@@ -1,1 +1,1 @@
-sale and all
+оплата+egger

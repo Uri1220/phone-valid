@@ -26,7 +26,7 @@
                    ></v-text-field>
                  <v-text-field
                   counter
-                  v-model.number="phone"
+                  v-model="phone"
                   :rules="phoneRules"
                   label="Телефон"
                   required

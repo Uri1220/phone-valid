@@ -38,7 +38,10 @@
           доставка
         </v-btn>
 
-        <v-btn :value="3" text>        
+        <v-btn :value="3" text
+         :to="{name:'Payment'}"
+        @click="isPaymentVisible"
+        >        
           <v-icon left size="26" class="material-icons">attach_money</v-icon>
             оплата
         </v-btn>      
@@ -99,8 +102,8 @@
 
       <v-list flat>
         <!-- ВЕРХУШКА -->
-        <v-subheader class="ml-5 mt-n2" >ТЦ "Стрелецкий Капитал"</v-subheader>
-        <v-divider></v-divider>
+        <!-- <v-subheader class="ml-5 mt-n2" >ТЦ "Стрелецкий Капитал"</v-subheader> -->
+        <!-- <v-divider></v-divider> -->
 
         <v-list-item>
           <v-list-item-avatar>
@@ -108,8 +111,9 @@
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title v-text="name"></v-list-item-title>
-            <v-list-item-subtitle>павильон №12</v-list-item-subtitle>
+            <v-list-item-title class="ml-4"  v-text="name"></v-list-item-title>
+            <v-list-item-subtitle>ТЦ "Стрелецкий Капитал</v-list-item-subtitle>
+            <v-list-item-subtitle class="ml-6">павильон №12</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -122,7 +126,7 @@
            v-model="menu"
            :close-on-content-click="false"
            :nudge-width="200" 
-            offset-y>
+            offset-x>
               <template v-slot:activator="{ on, attrs }">
                 <v-btn color="blue darken-1"
                 class text v-bind="attrs" 
@@ -152,21 +156,28 @@
 
               <v-img
                 src="https://arendastrelets.by/wp-content/uploads/2016/10/IMG_5268.jpg"
-                height="180px"
+                height="160px"
                 class="white--text align-end pointer"
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.4)"
               >
                 <v-card-title class="pb-1">
-                  <div class="text-img">ТЦ “Стрелецкий Капитал”, павильон №12</div>
+                  <span class="text-img">ТЦ “Стрелецкий Капитал, Пав.№12”</span>                 
                 </v-card-title>
               </v-img>
 
-              <v-card-text>I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.</v-card-text>
+              <v-card-text class="mb-n2">Индивидуальный предприниматель
+                                      Семеш М.Э.
+                                      2000000, г.Новополоцк, ул. Осипенко,1
+                                      р/с BY46RSHN000000000100000000 в
+                                      ЗАО «Банк Решение» БИК RSHTYRY
+                                      ЗАО «Банк Решение» БИК RSHTYRY
+                                      г. Минск, ул. Игнатенко, 11
+                                      УНП 111111111</v-card-text>
 
               <v-divider></v-divider>
 
               <v-list two-line>
-                <v-list-item class="ml-4 mb-n3">
+                <!-- <v-list-item class="ml-4 my-n3" >
                   <v-list-item-icon>
                     <v-icon color="red" size="28">mdi-phone</v-icon>
                   </v-list-item-icon>
@@ -176,17 +187,17 @@
                       <v-list-item-title>+375(0214) 000-00</v-list-item-title>
                       <v-list-item-subtitle>Рабочий</v-list-item-subtitle>
                     </div>
-                  </v-list-item-content>
+                  </v-list-item-content> -->
 
                   <!-- <v-list-item-icon>
                <v-icon>mdi-message-text</v-icon>
                   </v-list-item-icon>-->
-                </v-list-item>
+                <!-- </v-list-item> -->
 
-                <v-list-item>
+                <v-list-item class="mt-n2">
                   <v-list-item-icon>
                     <!-- <v-icon color="indigo">mdi-email</v-icon> -->
-                    <v-img sm5 height="28" src="https://www.a1.by/css/images/velcom-logo.gif"></v-img>
+                    <v-img sm5 height="26" src="https://www.a1.by/css/images/velcom-logo.gif"></v-img>
                   </v-list-item-icon>
 
                   <v-list-item-content>
@@ -195,7 +206,7 @@
                   </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item class="ml-4 mt-n4">
+                <v-list-item class="ml-4 my-n4">
                   <v-list-item-icon>
                     <v-img
                       sm5
@@ -206,7 +217,7 @@
                   </v-list-item-icon>
 
                   <v-list-item-content>
-                    <div class="pl-5">
+                    <div class="pl-5 mt-n3">
                       <v-list-item-title>+375(0214) 000-00</v-list-item-title>
                       <v-list-item-subtitle>Mobile</v-list-item-subtitle>
                     </div>
@@ -215,7 +226,7 @@
 
                 <v-divider></v-divider>
 
-                <v-list-item>
+                <v-list-item class="my-n3">
                   <v-list-item-icon>
                     <v-icon color="indigo">mdi-map-marker</v-icon>
                   </v-list-item-icon>
@@ -285,6 +296,9 @@ export default{
     },
     isDeliveryVisible(){
        this.$store.dispatch("getDeliveryTrue")
+    },
+    isPaymentVisible(){
+       this.$store.dispatch("getPaymentTrue")
     }
   },
  

@@ -10,8 +10,10 @@ import Sinteros from '../components/Linoleum/Sinteros.vue'
 import Juteks from '../components/Linoleum/Juteks.vue'
 import TopLinoleum from '../components/Linoleum/TopLinoleum.vue'
 import Kronostar from '../components/Laminat/Kronostar.vue'
+import Egger from '../components/Laminat/Egger.vue'
 import Checkout from '../components/Checkout'
 import Delivery from '../views/Delivery'
+import Payment from '../views/Payment'
 import Sale from '../views/Sale'
 
 
@@ -70,9 +72,19 @@ Vue.use(VueRouter)
       component:Kronostar
     },
     {
+      path: '/laminat/egger/',
+      name: 'Egger',
+      component:Egger
+    },
+    {
       path: '/delivery',
       name: 'Delivery',
       component:Delivery
+    },
+    {
+      path: '/payment',
+      name: 'Payment',
+      component:Payment
     },
     {
       path: '/sale',

@@ -1,12 +1,11 @@
 <template>
   <div>
     <!-- BREADCRUMBS -->    
-      <div class="bc" >
+      <div class="bc">
         <div>
-           <!-- <v-icon left>mdi-home</v-icon> -->
           <v-breadcrumbs :items="bread_items"></v-breadcrumbs>
         </div>
-        <div class="cc ml-n5">
+        <div class="cc ml-n4" >
           <!-- <v-icon small>mdi-chevron-right</v-icon> -->
           /{{ bottomNav }}
         </div>
@@ -14,7 +13,7 @@
                <p style="text-align:center ">КОЛЛЕКЦИИ</p>
       <!-- Bottom Navigations -->
        <bottom-navigation 
-        :list_collection="getColJut"
+        :list_collection="getColEgger"
         @getBotNav="getBotNavigation"        
         />
      
@@ -50,11 +49,11 @@ import BottomNavigation from '../Linoleum/LinoleumParts/BottomNavigation'
 import Description from '../Linoleum/LinoleumParts/Description'
 import { mapGetters } from "vuex";
 export default {
-  name: "Juteks",
+  name: "Egger",
   data: () => ({
-     brand:'ЛИНОЛЕУМ JUTEKS (ЮТЕКС)',
+     brand:'ЛАМИНАТ Egger',
      jut: [],
-    bottomNav: "Trend",
+    bottomNav: "Classic",
     bread_items: [
       {
         text: "Главная",
@@ -62,14 +61,14 @@ export default {
         href: "/"
       },
       {
-        text: "Линолеум",
+        text: "Ламинат",
         disabled: true,
-        href: "/linoleum/"
+        href: "/laminat/"
       },
       {
-        text: "Juteks",
+        text: "Egger",
         disabled: true,
-        href: "/linoleum/juteks"
+        href: "/laminat/egger"
       }
     ]
   }),
@@ -79,19 +78,19 @@ export default {
     Description
   },
   async mounted() {
-    if (!this.jut.length) this.jut = await this.$store.dispatch("fetchJuteks");
+    if (!this.jut.length) this.jut = await this.$store.dispatch("fetchEgger");
   },
   computed: {
-    ...mapGetters(["getJuteks", "getColJut"]),
+    ...mapGetters(["getEgger", "getColEgger"]),
     filteredProd() {
-      let products = this.getJuteks;
+      let products = this.getEgger;
       if (this.bottomNav)
         products = products.filter(p => p.cn === this.bottomNav);
       return products;
     },
     descriptionInfo() {
       let prod = [];
-      let products = this.getJuteks;
+      let products = this.getEgger;
       if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
       const arrFromString = prod.map(p => {
         return p.descr.split("`");
@@ -100,7 +99,7 @@ export default {
     },
     descriptionImg() {
       let prod = [];
-      let products = this.getJuteks;
+      let products = this.getEgger;
       if (this.bottomNav) prod = products.filter(p => p.id === this.bottomNav);
       //  console.log(prod[0]);
       return prod;
