@@ -38,6 +38,7 @@
         this.$emit('closePopup')
           this.$store.dispatch('getDeliveryFalse')
           this.$store.dispatch('getPaymentFalse')
+          this.$store.dispatch('getContactFalse')
       }
     },
      

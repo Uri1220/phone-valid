@@ -14,6 +14,7 @@ import Egger from '../components/Laminat/Egger.vue'
 import Checkout from '../components/Checkout'
 import Delivery from '../views/Delivery'
 import Payment from '../views/Payment'
+import Contact from '../views/Contact'
 import Sale from '../views/Sale'
 
 
@@ -85,6 +86,11 @@ Vue.use(VueRouter)
       path: '/payment',
       name: 'Payment',
       component:Payment
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component:Contact
     },
     {
       path: '/sale',

@@ -63,7 +63,7 @@ export default {
   },
   async mounted() {
     this.getPaymentTrue;
-    console.log("from Payment" + this.payment);    
+    // console.log("from Payment" + this.payment);    
   }
 };
 </script>
